@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: 'app-donate-directly',
+  templateUrl: './donate-directly.page.html',
+  styleUrls: ['./donate-directly.page.scss' , '../home/home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class DonateDirectlyPage implements OnInit {
 
-  title = 'Give';
+  title = 'Directly Give';
   balance = 200;
 
   charities = [
@@ -38,13 +38,14 @@ export class HomePage implements OnInit {
       image: './assets/icon/favicon.png',
       name: 'American Association of Retired Persons',
       amount: 299.3,
-      selected: true
+      selected: false
     },
     {
       id: '567',
       image: '/assets/icon/favicon.png',
       name: 'World Vision International',
-      amount: 299.3
+      amount: 299.3,
+      selected: false
     },    
   ]
 
@@ -56,5 +57,5 @@ export class HomePage implements OnInit {
   trackByFn(index: number, charity: any): any {
     return charity.id;
   }
-
+  
 }

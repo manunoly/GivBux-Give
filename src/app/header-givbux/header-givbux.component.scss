@@ -1,0 +1,14 @@
+.header-translucent-ios {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+} /*We need to chech this on build for iOs*/
+
+ion-toolbar {
+  --background: transparent;
+  --ion-color-base: transparent !important;
+  --ion-text-color: white;
+  h1 {
+    margin-top: 16px;
+    margin-bottom: 10px;
+  }
+}

@@ -4,22 +4,19 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { HomePageRoutingModule } from './home-routing.module';
+import { DonateAutomaticPageRoutingModule } from './donate-automatic-routing.module';
 
-import { HomePage } from './home.page';
+import { DonateAutomaticPage } from './donate-automatic.page';
 import { HeaderGivbuxModule } from '../header-givbux/header-givbux.module';
-
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule,
-    HeaderGivbuxModule,
+    DonateAutomaticPageRoutingModule,
+    HeaderGivbuxModule
   ],
-  declarations: [
-    HomePage,
-  ]
+  declarations: [DonateAutomaticPage]
 })
-export class HomePageModule {}
+export class DonateAutomaticPageModule {}

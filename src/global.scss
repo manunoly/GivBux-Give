@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -25,23 +25,84 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-
 .imageBack {
-    --background: url(/assets/img/back.png) no-repeat 52% center/cover;
-    --background-color: var(--ion-color-primary);
-  }
+  --background: url(/assets/img/back.png) no-repeat 52% center/cover;
+  --background-color: var(--ion-color-primary);
+}
 
-  .colorBack {
-    --background: linear-gradient(
-      to bottom,
-      var(--ion-color-primary) 300px,
-      white 1%
-    );
-  }
-
+.colorBack {
+  --background: linear-gradient(
+    to bottom,
+    var(--ion-color-primary) 45%,
+    white 1%
+  );
+}
 
 .roundGrid {
-    background-color: var(--ion-color-light) !important;
-    border-radius: 20px;
-    min-height: 300px;
+  background-color: var(--ion-color-light) !important;
+  border-radius: 20px;
+  min-height: 300px;
+}
+
+// SIZE FOR ICONS
+
+.font-size-icon-1 {
+  font-size: 1em;
+}
+.font-size-icon-2 {
+  font-size: 2em;
+}
+.font-size-icon-3 {
+  font-size: 3em;
+}
+
+// SIZE FOR TEXT
+
+
+.fs-text-06 {
+  font-size: 1em;
+}
+.fs-text-07 {
+  font-size: 1.1em;
+}
+.fs-text-08 {
+  font-size: 1.2em;
+}
+.fs-text-09 {
+  font-size: 1.3em;
+}
+.fs-text-10 {
+  font-size: 1.4em;
+}
+.fs-text-11 {
+  font-size: 1.5em;
+}
+.fs-text-12 {
+  font-size: 1.6em;
+}
+
+@media (max-width: 991px) {
+
+  .fs-text-06 {
+    font-size: 0.6em;
   }
+  .fs-text-07 {
+    font-size: 0.7em;
+  }
+  .fs-text-08 {
+    font-size: 0.8em;
+  }
+  .fs-text-09 {
+    font-size: 0.9em;
+  }
+  .fs-text-10 {
+    font-size: 1em;
+  }
+  .fs-text-11 {
+    font-size: 1.1em;
+  }
+  .fs-text-12 {
+    font-size: 1.2em;
+  }
+  
+}

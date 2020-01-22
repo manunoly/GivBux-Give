@@ -1,18 +1,19 @@
 <ion-header translucent no-border>
   <ion-toolbar class="headerT ion-text-center">
     <ion-buttons slot="start">
-      <ion-back-button *ngIf="inicio" color="secondary" defaultHref="welcome" [text]="''"></ion-back-button>
+      <ion-back-button *ngIf="inicio" color="secondary" defaultHref="home" [text]="''"></ion-back-button>
       <ion-button *ngIf="!inicio" fill="clear">
         <ion-icon [hidden]="!inicio" slot="icon-only" name="menu"></ion-icon>
       </ion-button>
     </ion-buttons>
 
-    <ion-title style="font-size: 30PX;">
+    <ion-title style="font-size: 30PX;" color="secondary">
       <h1> <b> GIVBUX </b></h1>
     </ion-title>
 
     <ion-buttons slot="end">
-      <ion-menu-button *ngIf="fin" color="secondary"></ion-menu-button>
+      <!-- <ion-menu-button *ngIf="fin" color="secondary"></ion-menu-button> -->
+      <ion-icon *ngIf="fin" color="secondary" type="ios" name="time" size="large"></ion-icon>
 
       <ion-button *ngIf="!fin" fill="clear">
         <ion-icon [hidden]="!fin" slot="icon-only" name="menu"></ion-icon>

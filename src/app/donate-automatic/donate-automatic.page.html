@@ -1,0 +1,112 @@
+<ion-content fullscreen class="ion-text-center ion-padding colorBack">
+
+  <!-- MAIN TEXT HEADER WITH ICON RIGHT -->
+  <app-header-givbux [inicio]=true [fin]=false></app-header-givbux>
+
+  <!-- <ion-row class="ion-align-items-center">
+    <ion-col></ion-col>
+    <ion-col>
+      <ion-text color="secondary">
+        <h3>{{title | uppercase}}</h3>
+      </ion-text>
+    </ion-col>
+    <ion-col class="ion-text-end">
+      <ion-icon color="secondary" name="refresh" size="large"></ion-icon>
+    </ion-col>
+  </ion-row> -->
+
+  <ion-text color="light">
+    <h5 class="ion-padding-vertical">{{title | uppercase}}</h5>
+  </ion-text>
+
+  <ion-text color="light">
+    <h6 class="ion-padding-bottom">
+      DONATION HOLDING BALANCE 
+      <br />
+      <span class="font-size-balance">{{balance | currency: 'USD'}}</span>
+    </h6>
+  </ion-text>
+
+  <!-- MAIN BODY ROUND GRID -->
+  <ion-grid class="roundGrid">
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Percentage to donate</ion-label>
+          <ion-input type='number' min="1" max="100" step="1" inputmode="numeric" class="ion-text-center"></ion-input>
+          <ion-text color="dark" slot="end" class="ion-align-self-end">%</ion-text>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-text color="primary" class="fs-text-09">
+          <p>
+            Select one or two charities from the list below that you wish to
+            donate your rewards to.
+          </p>
+        </ion-text>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-item lines="none" class="item-icon-help-bottom">
+          <ion-icon name="help-circle-outline" color="secondary" slot="end" size="large"></ion-icon>
+        </ion-item>
+      </ion-col>
+
+      <!-- NgFor Item Charity -->
+      <ion-col *ngFor="let charity of charities ; trackBy:trackByFn ; let i=index" size="4">
+        <ion-row class="ion-align-items-center">
+          <!-- Col for img  -->
+          <ion-col size="12">
+            <div class="img-box">
+              <ion-img [src]="charity.image"></ion-img>
+            </div>
+          </ion-col>
+
+          <!-- Name Col -->
+          <ion-col size="12" class="ion-margin-top">
+            <span class="fs-text-06">{{charity.name | titlecase}}</span>
+          </ion-col>
+
+          <!-- Percentage Col -->
+          <ion-col class="ion-text-center ion-margin-bottom" size="12">
+            <div *ngIf="charity?.selected">
+              <span class="border-percentage"><b>50%</b></span>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <!-- NgFor Item Charity -->
+
+      <!-- col Button OTHER -->
+      <ion-col size="4">
+        <div class="container-fab-other">
+          <ion-fab-button class="fab-other" color="primary">Other</ion-fab-button>
+        </div>
+      </ion-col>
+
+      <!-- SAVE BUTTON -->
+
+      <ion-col size="12">
+        <ion-button color="primary" shape="round" expand="block">SAVE</ion-button>
+      </ion-col>
+
+      <!-- Donate From my wallet button -->
+
+      <ion-col size="12">
+        <ion-button color="primary" shape="round" expand="block">DONATE FROM MY WALLET</ion-button>
+      </ion-col>
+
+
+      <!-- HISTORY BUTTON -->
+
+      <ion-col size="12" class="ion-margin-vertical">
+        <div class="container-fab-history">
+          <ion-fab-button color="primary" class="fab-history" [routerLink]="['/history']" routerLinkActive="router-link-active" >History</ion-fab-button>
+        </div>
+      </ion-col>
+
+
+    </ion-row>
+  </ion-grid>
+</ion-content>

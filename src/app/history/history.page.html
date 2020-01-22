@@ -1,9 +1,38 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>history</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content fullscreen class="ion-text-center ion-padding colorBack">
 
-<ion-content>
+  <!-- MAIN TEXT HEADER WITH ICON RIGHT -->
+  <app-header-givbux [inicio]=true [fin]=false></app-header-givbux>
+
+  <ion-text color="light">
+    <h5 class="ion-padding-vertical">{{title | uppercase}}</h5>
+  </ion-text>
+
+  <!-- MAIN BODY ROUND GRID -->
+  <ion-grid class="roundGrid">
+    <ion-row>
+
+      <ion-col size="12">
+        <ion-list>
+          <ion-item *ngFor="let item of historical; trackBy:trackByFn">
+
+            <ion-label color="primary">
+
+              <h2><b>{{item.donationreceive.name}}</b></h2>
+
+              <p><span class="color-gray">Amount: </span> <span class="color-dark">{{item.amount | currency:'USD' }} you total Give </span></p> 
+              <p><span class="color-gray">Date: </span> <span class="color-dark">{{item.date | date:'medium' }}</span></p> 
+
+
+            </ion-label>
+
+
+
+          </ion-item>
+        </ion-list>
+      </ion-col>
+
+
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

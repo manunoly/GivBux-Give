@@ -1,0 +1,49 @@
+h3 {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.padding-row{
+  padding-top: 2vmax;
+}
+
+.font-size-balance {
+  font-size: 1.4em;
+}
+
+.item-icon-help-top {
+  margin-bottom: -1.2em;
+}
+
+.item-icon-help-bottom {
+  margin-top: -1.3em;
+}
+
+.img-box {
+  width: 10vh;
+  margin: auto;
+  display: block;
+}
+
+.border-percentage{
+  border: 2px solid var(--ion-color-primary);
+  padding: 0 .5vh;
+}
+
+.container-fab-other{
+  .fab-other {
+    margin: auto;
+    width: 12vmax;
+    height: 12vmax;
+  }  
+}
+
+.container-fab-history{
+  .fab-history{
+    float: right;
+    width: 10vmax;
+    height: 10vmax;
+  }
+}

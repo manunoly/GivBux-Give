@@ -1,8 +1,19 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
+@font-face {
+    font-family: "NoirPro";
+    font-style: normal;
+    font-weight: normal;
+    src: url("/assets/font/NoirPro-Regular.ttf");
+  }
+
 /** Ionic CSS Variables **/
 :root {
+
+  /** primary font **/
+  --ion-font-family: "NoirPro";
+
  /** primary **/
  --ion-color-primary: #6633cb;
  --ion-color-primary-rgb: 56, 128, 255;

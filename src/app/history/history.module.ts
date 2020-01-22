@@ -7,14 +7,19 @@ import { IonicModule } from '@ionic/angular';
 import { HistoryPageRoutingModule } from './history-routing.module';
 
 import { HistoryPage } from './history.page';
+import { HeaderGivbuxModule } from '../header-givbux/header-givbux.module';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HistoryPageRoutingModule
+    HistoryPageRoutingModule,
+    HeaderGivbuxModule,
   ],
-  declarations: [HistoryPage]
+  declarations: [
+    HistoryPage,
+  ]
 })
 export class HistoryPageModule {}

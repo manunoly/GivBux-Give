@@ -24,3 +24,24 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+.imageBack {
+    --background: url(/assets/img/back.png) no-repeat 52% center/cover;
+    --background-color: var(--ion-color-primary);
+  }
+
+  .colorBack {
+    --background: linear-gradient(
+      to bottom,
+      var(--ion-color-primary) 300px,
+      white 1%
+    );
+  }
+
+
+.roundGrid {
+    background-color: var(--ion-color-light) !important;
+    border-radius: 20px;
+    min-height: 300px;
+  }

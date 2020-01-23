@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-header-givbux',
@@ -11,7 +10,7 @@ export class HeaderGivbuxComponent implements OnInit {
   @Input() inicio = true;
   @Input() fin = true;
 
-  constructor(public navController : NavController) { }
+  constructor() { }
 
   ngOnInit() {}
 

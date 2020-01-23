@@ -3,18 +3,6 @@
   <!-- MAIN TEXT HEADER WITH ICON RIGHT -->
   <app-header-givbux [inicio]=true [fin]=false></app-header-givbux>
 
-  <!-- <ion-row class="ion-align-items-center">
-    <ion-col></ion-col>
-    <ion-col>
-      <ion-text color="secondary">
-        <h3>{{title | uppercase}}</h3>
-      </ion-text>
-    </ion-col>
-    <ion-col class="ion-text-end">
-      <ion-icon color="secondary" name="refresh" size="large"></ion-icon>
-    </ion-col>
-  </ion-row> -->
-
   <ion-text color="light">
     <h5 class="ion-padding-vertical">{{title | uppercase}}</h5>
   </ion-text>
@@ -23,7 +11,7 @@
     <h6 class="ion-padding-bottom">
       DONATION HOLDING BALANCE 
       <br />
-      <span class="font-size-balance">{{balance | currency: 'USD'}}</span>
+      <span class="font-size-balance">{{ (userSesion?.user_balance_give ? userSesion.user_balance_give : 0) | currency: 'USD'}}</span>
     </h6>
   </ion-text>
 
@@ -94,7 +82,7 @@
       <!-- Donate From my wallet button -->
 
       <ion-col size="12">
-        <ion-button color="primary" shape="round" expand="block">DONATE FROM MY WALLET</ion-button>
+        <ion-button color="primary" shape="round" expand="block" (click)="showAlertConfirmGivin()">DONATE FROM MY WALLET</ion-button>
       </ion-col>
 
 

@@ -8,9 +8,14 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
+    path: 'home/:token',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
+  {
     path: 'history',
     loadChildren: () => import('./history/history.module').then( m => m.HistoryPageModule)
-  },  {
+  },
+  {
     path: 'donate-automatic',
     loadChildren: () => import('./donate-automatic/donate-automatic.module').then( m => m.DonateAutomaticPageModule)
   },
@@ -18,6 +23,14 @@ const routes: Routes = [
     path: 'donate-directly',
     loadChildren: () => import('./donate-directly/donate-directly.module').then( m => m.DonateDirectlyPageModule)
   },
+  {
+    path: 'success/:typepage',
+    loadChildren: () => import('./success/success.module').then( m => m.SuccessPageModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'home', pathMatch: 'full'
+  }
 
 ];
 

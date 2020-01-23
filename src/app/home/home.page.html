@@ -3,18 +3,6 @@
   <!-- MAIN TEXT HEADER WITH ICON RIGHT -->
   <app-header-givbux [inicio]=false [fin]=false></app-header-givbux>
 
-  <!-- <ion-row class="ion-align-items-center">
-    <ion-col></ion-col>
-    <ion-col>
-      <ion-text color="secondary">
-        <h3>{{title | uppercase}}</h3>
-      </ion-text>
-    </ion-col>
-    <ion-col class="ion-text-end">
-      <ion-icon color="secondary" name="refresh" size="large"></ion-icon>
-    </ion-col>
-  </ion-row> -->
-
   <ion-text color="light">
     <h5 class="ion-padding-vertical">{{title | uppercase}}</h5>
   </ion-text>
@@ -22,12 +10,12 @@
   <ion-text color="light">
     <h6 class="ion-padding-bottom">
       DONATION HOLDING BALANCE <br />
-      <span class="font-size-balance">{{balance | currency: 'USD'}}</span>
+      <span class="font-size-balance">{{ (userSesion?.user_balance_give ? userSesion.user_balance_give : 0) | currency: 'USD' }}</span>
     </h6>
   </ion-text>
 
-  <!-- MAIN BODY ROUND GRID -->
-  <ion-grid class="roundGrid">
+  <!-- MAIN BODY ROUND GRID WITH TOKEN VALID -->
+  <ion-grid *ngIf="tokenValid && !loading" class="roundGrid">
     <ion-row class="align-items-center padding-row">
 
       <!-- AUTOMATIC DONATION BUTTON -->
@@ -77,7 +65,7 @@
       </ion-col>
 
 
-        <!-- DONATE FROM MY WALLET BUTTON -->
+      <!-- DONATE FROM MY WALLET BUTTON -->
 
       <!-- HELP ICON -->
       <ion-col size="12">
@@ -87,7 +75,7 @@
       </ion-col>
 
       <ion-col size="12">
-        <ion-button color="primary" shape="round" expand="block">DONATE FROM MY WALLET</ion-button>
+        <ion-button color="primary" shape="round" expand="block" (click)="showAlertConfirmGivin()">DONATE FROM MY WALLET</ion-button>
       </ion-col>
 
       <ion-col size="12">
@@ -100,4 +88,38 @@
 
     </ion-row>
   </ion-grid>
+
+  <!-- GRID INVALIDATE -->
+
+  <ion-grid *ngIf="!tokenValid && !loading" class="roundGrid">
+    <ion-row class="align-items-center padding-row">
+
+     
+      <ion-col size="12">
+
+        <ion-text color="primary">
+          <h5>Your session has expired please or invalid token
+            <br>
+            Please try again from Givbux App.
+          </h5>
+        </ion-text>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-button color="primary" shape="round" expand="block" (click)="this._utils.returnToApp()">BACK</ion-button>
+      </ion-col>
+
+
+    </ion-row>
+  </ion-grid>
+
+
+  <!-- GRID LOADING -->
+
+  <ion-grid *ngIf="loading" class="roundGrid">
+    <ion-row class="align-items-center padding-row">
+    </ion-row>
+  </ion-grid>
+
+
 </ion-content>

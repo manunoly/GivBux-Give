@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../_services/api.service';
+import { ActivatedRoute } from '@angular/router';
+import { UtilsService } from '../_services/utils.service';
 
 @Component({
   selector: 'app-home',
@@ -8,53 +11,80 @@ import { Component, OnInit } from '@angular/core';
 export class HomePage implements OnInit {
 
   title = 'Give';
-  balance = 200;
+  tokenValid: boolean = false;
+  loading = false;
+  userSesion;
 
-  charities = [
-    {
-      id: 'HAlRCC0J7q',
-      image: './assets/icon/favicon.png',
-      name: 'Ronald McDonald House Charity',
-      amount: 299.3,
-      selected: false
-
-    },
-    {
-      id: '321654',
-      image: './assets/icon/favicon.png',
-      name: 'American Cancer Society',
-      amount: 299.3,
-      selected: false,
-    },
-    {
-      id: '123',
-      image: './assets/icon/favicon.png',
-      name: 'Women´s and Children Shelter',
-      amount: 299.3,
-      selected: false
-    },
-    {
-      id: '345',
-      image: './assets/icon/favicon.png',
-      name: 'American Association of Retired Persons',
-      amount: 299.3,
-      selected: true
-    },
-    {
-      id: '567',
-      image: '/assets/icon/favicon.png',
-      name: 'World Vision International',
-      amount: 299.3
-    },    
-  ]
-
-  constructor() { }
+  constructor(private _api: ApiService,
+    private route: ActivatedRoute,
+    public _utils: UtilsService) {
+    
+  }
 
   ngOnInit() {
+    this.checkTokenValidation();
+  }
+
+  // For Refresh home after some success transfer
+  ionViewWillEnter(){ 
+    //check after transfer param
+    if(this._api.afterTransferSuccess){
+      this._api.afterTransferSuccess = false; //Setting variable controller to false after transfer success
+      console.log('reEnter on Home after transfer');
+      this.checkTokenValidation();
+
+    }
   }
 
   trackByFn(index: number, charity: any): any {
     return charity.id;
   }
+
+  checkTokenValidation(){
+    if (this.route.snapshot.paramMap.get('token')){
+      console.log('token recieved => ' + this.route.snapshot.paramMap.get('token'));
+      this.giveValidateToken(this.route.snapshot.paramMap.get('token'))
+    }     
+    else if (this._api.refreshSameTokenSession()){
+      console.log('retrieve token from session => ' + this._api.token);
+      this.giveValidateToken(this._api.token);
+    }   
+  }
+
+  async giveValidateToken(token: string) {
+    
+    console.log('checking token...');
+
+    try {
+
+      this.loading = true;
+      await this._utils.showLoading();
+      const responseUser = await this._api.giveValidateToken(token);
+      await this._utils.dismissLoading();
+      this.loading = false;
+      this.tokenValid = true;
+      console.log(responseUser);
+
+      // SETTING UP DATA ON SERVICE AND COMPONENT
+      this._api.token = token;
+      this._api.userSesion = responseUser;
+
+      this.userSesion = responseUser;
+
+
+    } catch (error) {
+      await this._utils.dismissLoading();
+      this.loading = false;
+      this.tokenValid = false;
+      console.log(error['error'].error ? error['error'].message : 'error');
+    }
+
+  }
+
+  showAlertConfirmGivin() {
+    this._utils.showAlertConfirmGivin();
+  }
+
+
 
 }

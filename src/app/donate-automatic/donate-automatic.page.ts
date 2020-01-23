@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../_services/api.service';
+import { UtilsService } from '../_services/utils.service';
 
 @Component({
   selector: 'app-donate-automatic',
@@ -9,6 +11,7 @@ export class DonateAutomaticPage implements OnInit {
 
   title = 'Automatic Give';
   balance = 200;
+  userSesion;
 
   charities = [
     {
@@ -49,9 +52,16 @@ export class DonateAutomaticPage implements OnInit {
     },    
   ]
 
-  constructor() { }
+  constructor(private _api: ApiService,
+    public _utils : UtilsService) { 
+      this.userSesion = this._api.userSesion;
+    }
 
   ngOnInit() {
+  }
+
+  showAlertConfirmGivin() {
+    this._utils.showAlertConfirmGivin();
   }
 
   trackByFn(index: number, charity: any): any {

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../_services/api.service';
+import { UtilsService } from '../_services/utils.service';
 
 @Component({
   selector: 'app-donate-directly',
@@ -9,6 +11,7 @@ export class DonateDirectlyPage implements OnInit {
 
   title = 'Directly Give';
   balance = 200;
+  userSesion;
 
   charities = [
     {
@@ -49,7 +52,10 @@ export class DonateDirectlyPage implements OnInit {
     },    
   ]
 
-  constructor() { }
+  constructor(private _api: ApiService,
+    public _utils : UtilsService) { 
+      this.userSesion = this._api.userSesion;
+    }
 
   ngOnInit() {
   }

@@ -104,7 +104,7 @@
       <!-- SAVE BUTTON -->
 
       <ion-col size="12">
-        <ion-button color="primary" shape="round" expand="block" [disabled]=" !(percentageToDonate > 0) || !(this.charitiesSelected.length > 0) " >SAVE</ion-button>
+        <ion-button color="primary" shape="round" expand="block" [disabled]=" !(percentageToDonate > 0) || !(this.charitiesSelected.length > 0) " (click)="setGiveDefaultDonation()" >SAVE</ion-button>
       </ion-col>
 
       <!-- Donate From my wallet button -->

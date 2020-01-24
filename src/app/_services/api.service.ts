@@ -97,6 +97,23 @@ export class ApiService {
     return this._http.post( url, params, { headers: headers }).toPromise();
   }
 
+  giveSaveDefaultAutomatic(id_charity1 : string , id_charity2? : string) { //Promise<Object>
+
+    const url = this.apiUrl + "givesavedefault";
+    const headers = this.getHeaders();
+
+    let params = {   
+      token: this.token,  
+      id_charity1: id_charity1
+    };
+
+    (id_charity2) ?  ( params = {...params , ...{id_charity2 : id_charity2} }) : '';
+
+    console.log(params);
+
+    //return this._http.post( url, params, { headers: headers }).toPromise();
+  }
+
   getHistorical() : Promise<Object> {
  
       const url = this.apiUrl + "givehistorytoken";

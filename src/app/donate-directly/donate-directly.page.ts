@@ -71,9 +71,6 @@ export class DonateDirectlyPage implements OnInit {
       }
     }
 
-
-
-
   }
 
   selectCharityToDonate(index: number, charity: Charity) {

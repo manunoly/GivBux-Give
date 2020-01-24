@@ -53,6 +53,32 @@ export class DonateAutomaticPage implements OnInit {
     this.refreshData();
   }
 
+  async setGiveDefaultDonation() {
+
+    const charity2OptionalName = this.charitiesSelected[1] ? this.charitiesSelected[1].name : null;
+    const charity2OptionalID = this.charitiesSelected[1] ? this.charitiesSelected[1].id : null;
+
+    // WAIT FOR Response FROM ALERT
+    const responseAlert = await this._utils.showAlertConfirmGivinAutomatic(this.charitiesSelected[0].name ,  Number(this.percentageToDonate.toFixed(2)) , charity2OptionalName );
+    console.log(responseAlert);
+
+    if (responseAlert) {
+      try {
+
+       await this._utils.showLoading();
+       const response = await this._api.giveSaveDefaultAutomatic(this.charitiesSelected[0].id, charity2OptionalID);
+       await this._utils.dismissLoading();
+       // this.router.navigate(['/success', 'directly', { charity1: this.charitySelected.name, amount: this.amountToDonate }])
+
+      } catch (error) {
+        this._utils.dismissLoading();
+        this._utils.showAlertMessage('Info', error['error'].message ? error['error'].message : 'error');
+        console.log(error);
+      }
+    }
+
+  }
+
   selectCharityToDonate(index: number, charitySelect: Charity) {
 
     //console.log(this.charitySelectedQuantity);

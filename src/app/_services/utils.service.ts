@@ -82,6 +82,45 @@ export class UtilsService {
 
   }
 
+  async showAlertConfirmGivinAutomatic(charityName1: string , percentageToDonate : number , charityName2? : string , ) : Promise<boolean> {
+
+    let resolveFunction: (confirm: boolean) => void;
+    const promise = new Promise<boolean>(resolve => {
+      resolveFunction = resolve;
+    });
+
+    const subHeader = (charityName2) ?
+    (`Are you sure you want to Donate ${percentageToDonate/2}% to ${charityName1} And ${charityName2} ?`) :
+    (`Are you sure you want to Donate ${percentageToDonate}% to ${charityName1}?`)
+
+      const alert = await this.alertController.create({
+        header: 'CONFIRM YOUR DONATION',
+        subHeader: subHeader,
+        message: '',
+        buttons: [
+          {
+            text: 'Donate',
+            cssClass: 'secondary',
+            handler: () => {
+              resolveFunction(true)
+            }
+          },
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+              console.log('alert Cancel');
+              resolveFunction(false)
+            }
+          }
+        ]
+      });
+
+      await alert.present();
+      return promise;
+  
+  }
+
   async showAlertConfirmGivinDirectly(charityName: string, amount: number) : Promise<boolean> {
 
     let resolveFunction: (confirm: boolean) => void;

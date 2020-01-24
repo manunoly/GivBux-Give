@@ -1,7 +1,7 @@
-<ion-content fullscreen class="ion-text-center ion-padding colorBack">
+<!-- MAIN TEXT HEADER WITH ICON RIGHT -->
+<app-header-givbux [inicio]=false [fin]=false></app-header-givbux>
 
-  <!-- MAIN TEXT HEADER WITH ICON RIGHT -->
-  <app-header-givbux [inicio]=false [fin]=false></app-header-givbux>
+<ion-content fullscreen class="ion-text-center ion-padding colorBack">
 
   <ion-text color="light">
     <h5 class="ion-padding-vertical">{{title | uppercase}}</h5>
@@ -10,7 +10,8 @@
   <ion-text color="light">
     <h6 class="ion-padding-bottom">
       DONATION HOLDING BALANCE <br />
-      <span class="font-size-balance">{{ (userSesion?.user_balance_give ? userSesion.user_balance_give : 0) | currency: 'USD' }}</span>
+      <span
+        class="font-size-balance">{{ (userSesion?.user_balance_give ? userSesion.user_balance_give : 0) | currency: 'USD' }}</span>
     </h6>
   </ion-text>
 
@@ -75,7 +76,8 @@
       </ion-col>
 
       <ion-col size="12">
-        <ion-button color="primary" shape="round" expand="block" (click)="showAlertConfirmGivin()">DONATE FROM MY WALLET</ion-button>
+        <ion-button color="primary" shape="round" expand="block" (click)="showAlertConfirmGivinFromWallet()">DONATE FROM MY WALLET
+        </ion-button>
       </ion-col>
 
       <ion-col size="12">
@@ -94,7 +96,7 @@
   <ion-grid *ngIf="!tokenValid && !loading" class="roundGrid">
     <ion-row class="align-items-center padding-row">
 
-     
+
       <ion-col size="12">
 
         <ion-text color="primary">

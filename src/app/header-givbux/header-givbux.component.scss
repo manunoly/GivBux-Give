@@ -4,8 +4,8 @@
 } /*We need to chech this on build for iOs*/
 
 ion-toolbar {
-  --background: transparent;
-  --ion-color-base: transparent !important;
+  --background: var(--ion-color-primary);
+  --ion-color-base: var(--ion-color-primary) !important;
   --ion-text-color: white;
   h1 {
     margin-top: 16px;

@@ -30,6 +30,7 @@ export class HistoryPage implements OnInit {
 
     } catch (error) {
       this._utils.dismissLoading();
+      this._utils.showAlertMessage( 'Info' , error['error'].message ? error['error'].message  : 'error');
       console.log(error);
     }
 

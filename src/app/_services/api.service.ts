@@ -33,6 +33,7 @@ export class ApiService {
   
   public set userSesion(v : any) {
     this._userSesion = v;
+    sessionStorage.setItem('userSesion' , JSON.stringify(v));
   } 
   
   public get token() : string {
@@ -79,7 +80,21 @@ export class ApiService {
     const url = this.apiUrl + "give";
     const headers = this.getHeaders();
 
-    return this._http.post(url, { headers: headers }).toPromise();
+    return this._http.get(url, { headers: headers }).toPromise();
+  }
+
+  giveToCharity(id_charity : string , amount : number) : Promise<Object> {
+
+    const url = this.apiUrl + "give";
+    const headers = this.getHeaders();
+
+    const params = {
+      id_organizations: id_charity,
+      amount: ''+amount,
+      token: this.token
+    };
+
+    return this._http.post( url, params, { headers: headers }).toPromise();
   }
 
   getHistorical() : Promise<Object> {
@@ -97,6 +112,7 @@ export class ApiService {
 
     if(sessionStorage.getItem('token')){
       this._token =  sessionStorage.getItem('token');
+      this._userSesion = JSON.parse(sessionStorage.getItem('userSesion'));
       return true;
     }
     return false;

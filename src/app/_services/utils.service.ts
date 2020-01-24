@@ -10,7 +10,7 @@ export class UtilsService {
 
   loading;
 
-  constructor(private router : Router,
+  constructor(private router: Router,
     private loadingController: LoadingController,
     private alertController: AlertController,
     private _api: ApiService) { }
@@ -34,7 +34,7 @@ export class UtilsService {
     }
   }
 
-  async showAlertConfirmGivin() {
+  async showAlertConfirmGivinFromWallet() {
 
     const alert = await this.alertController.create({
       header: 'CONFIRM GIVING',
@@ -82,10 +82,46 @@ export class UtilsService {
 
   }
 
- async showAlertMessage(title: string) {
+  async showAlertConfirmGivinDirectly(charityName: string, amount: number) : Promise<boolean> {
+
+    let resolveFunction: (confirm: boolean) => void;
+    const promise = new Promise<boolean>(resolve => {
+      resolveFunction = resolve;
+    });
+
+      const alert = await this.alertController.create({
+        header: 'CONFIRM YOUR DONATION',
+        subHeader: `Are you sure you want to Donate ${amount} to ${charityName}?`,
+        message: '',
+        buttons: [
+          {
+            text: 'Donate',
+            cssClass: 'secondary',
+            handler: () => {
+              resolveFunction(true)
+            }
+          },
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+              console.log('alert Cancel');
+              resolveFunction(false)
+            }
+          }
+        ]
+      });
+
+      await alert.present();
+      return promise;
+  
+  }
+
+  async showAlertMessage(title: string, message: string = '') {
 
     const alert = await this.alertController.create({
-      header: `${title}`,    
+      header: `${title}`,
+      subHeader: `${message}`
     });
 
     await alert.present();
@@ -105,7 +141,7 @@ export class UtilsService {
       const response = await this._api.donateFromWallet(amount, this._api.token);
       await this.dismissLoading();
       console.log(response);
-      this.router.navigate([ '/success' , 'holding' , { amount } ]);
+      this.router.navigate(['/success', 'holding', { amount }]);
 
     } catch (error) {
 

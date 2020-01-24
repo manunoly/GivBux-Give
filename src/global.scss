@@ -44,6 +44,10 @@
   min-height: 300px;
 }
 
+.borderSelectedCharity{
+  border: 2px solid var(--ion-color-primary);
+}
+
 // Some loading basic styles
 .loading-wrapper{
   --spinner-color: var(--ion-color-primary);

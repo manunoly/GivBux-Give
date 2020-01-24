@@ -1,7 +1,7 @@
-<ion-content fullscreen class="ion-text-center ion-padding colorBack">
+<!-- MAIN TEXT HEADER WITH ICON RIGHT -->
+<app-header-givbux [inicio]=true [fin]=false></app-header-givbux>
 
-  <!-- MAIN TEXT HEADER WITH ICON RIGHT -->
-  <app-header-givbux [inicio]=true [fin]=false></app-header-givbux>
+<ion-content fullscreen class="ion-text-center ion-padding colorBack">
 
   <ion-text color="light">
     <h5 class="ion-padding-vertical">{{title | uppercase}}</h5>
@@ -10,7 +10,8 @@
   <ion-text color="light">
     <h6 class="ion-padding-bottom">
       YOU HAVE TO DONATE <br />
-      <span class="font-size-balance">{{ (userSesion?.user_balance_give ? userSesion.user_balance_give : 0) | currency: 'USD'}}</span>
+      <span
+        class="font-size-balance">{{ (userSesion?.user_balance_give ? userSesion.user_balance_give : 0) | currency: 'USD'}}</span>
     </h6>
   </ion-text>
 
@@ -20,8 +21,8 @@
       <ion-col size="12">
         <ion-item>
           <ion-label position="floating">Amount to donate</ion-label>
-          <ion-input type='number' inputmode="decimal" class="ion-text-center"></ion-input>   
-          <ion-text color="dark" slot="start" class="ion-align-self-end">$</ion-text>    
+          <ion-input type='number' inputmode="decimal" class="ion-text-center" [(ngModel)]="amountToDonate"></ion-input>
+          <ion-text color="dark" slot="start" class="ion-align-self-end">$</ion-text>
         </ion-item>
       </ion-col>
 
@@ -41,48 +42,68 @@
       </ion-col>
 
       <!-- NgFor Item Charity -->
-      <ion-col *ngFor="let charity of charities ; trackBy:trackByFn ; let i=index" size="4">
-        <ion-row class="ion-align-items-center">
-          <!-- Col for img  -->
-          <ion-col size="12">
-            <div class="img-box">
-              <ion-img [src]="charity.image"></ion-img>
-            </div>
-          </ion-col>
+      <ng-container *ngIf="!loading">
 
-          <!-- Name Col -->
-          <ion-col size="12" class="ion-margin-top">
-            <span class="fs-text-06">{{charity.name | titlecase}}</span>
-          </ion-col>
 
-          <!-- Percentage Col -->
-          <ion-col class="ion-text-center ion-margin-bottom" size="12">
-            <div *ngIf="charity?.selected">
-              <span class="border-percentage"><b>50%</b></span>
-            </div>
-          </ion-col>
-        </ion-row>
-      </ion-col>
-      <!-- NgFor Item Charity -->
+        <ion-col *ngFor="let charity of charities ; let i=index ; trackBy:trackByFn" size="4">
 
-      <!-- col Button OTHER -->
-      <ion-col size="4">
-        <div class="container-fab-other">
-          <ion-fab-button class="fab-other" color="primary">Other</ion-fab-button>
-        </div>
-      </ion-col>
+          <!-- CHARITIES -->
+          <ion-row *ngIf="charity.name !== 'Other'" class="ion-align-items-center"
+            (click)="selectCharityToDonate(i , charity)">
+
+            <!-- Col for img  -->
+            <ion-col size="12">
+              <div class="img-box" [ngClass]="{'borderSelectedCharity': (charity?.selected)}">
+                <ion-img [src]="image"></ion-img>
+              </div>
+            </ion-col>
+
+            <!-- Name Col -->
+            <ion-col size="12" class="ion-margin-top">
+              <span class="fs-text-06">{{charity.name | titlecase}}</span>
+            </ion-col>
+
+          </ion-row>
+
+          <!-- col FAB Button OTHER -->
+          <ion-row *ngIf="charity.name === 'Other' ">
+            <ion-col size="4">
+              <div class="container-fab-other">
+                <ion-fab-button class="fab-other" color="primary"
+                  [ngClass]="{'borderSelectedCharity': (charity?.selected)}"
+                  (click)="selectCharityToDonate(i , charity)">Other</ion-fab-button>
+              </div>
+            </ion-col> -->
+          </ion-row>
+
+        </ion-col>
+        <!-- NgFor Item Charity -->
+
+      </ng-container>
+
+      <!-- LOADING SPINNER -->
+      <ng-container *ngIf="loading">
+        <ion-col size="12" class="ion-text-center ion-margin-vertical">
+          <ion-spinner color="primary"></ion-spinner><span>
+            <p color="primary">Loading...</p>
+          </span>
+        </ion-col>
+      </ng-container>
+
 
       <!-- DONATE BUTTON -->
 
       <ion-col size="12">
-        <ion-button color="primary" shape="round" expand="block">DONATE</ion-button>
+        <ion-button color="primary" shape="round" expand="block"
+          [disabled]=" !(amountToDonate > 0) || !charitySelected " (click)="giveDonateToCharity()">DONATE</ion-button>
       </ion-col>
 
       <!-- HISTORY BUTTON -->
 
       <ion-col size="12" class="ion-margin-vertical">
         <div class="container-fab-history">
-          <ion-fab-button color="primary" class="fab-history" [routerLink]="['/history']" routerLinkActive="router-link-active" >History</ion-fab-button>
+          <ion-fab-button color="primary" class="fab-history" [routerLink]="['/history']"
+            routerLinkActive="router-link-active">History</ion-fab-button>
         </div>
       </ion-col>
 

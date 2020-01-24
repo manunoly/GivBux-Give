@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../_services/api.service';
 import { UtilsService } from '../_services/utils.service';
+import { Charity } from '../_models/charity.model';
 
 @Component({
   selector: 'app-donate-automatic',
@@ -10,62 +11,112 @@ import { UtilsService } from '../_services/utils.service';
 export class DonateAutomaticPage implements OnInit {
 
   title = 'Automatic Give';
-  balance = 200;
   userSesion;
 
-  charities = [
-    {
-      id: 'HAlRCC0J7q',
-      image: './assets/icon/favicon.png',
-      name: 'Ronald McDonald House Charity',
-      amount: 299.3,
-      selected: false
+  loading: boolean = false;
+  image = './assets/icon/favicon.png';
 
-    },
-    {
-      id: '321654',
-      image: './assets/icon/favicon.png',
-      name: 'American Cancer Society',
-      amount: 299.3,
-      selected: false,
-    },
-    {
-      id: '123',
-      image: './assets/icon/favicon.png',
-      name: 'Women´s and Children Shelter',
-      amount: 299.3,
-      selected: false
-    },
-    {
-      id: '345',
-      image: './assets/icon/favicon.png',
-      name: 'American Association of Retired Persons',
-      amount: 299.3,
-      selected: false
-    },
-    {
-      id: '567',
-      image: '/assets/icon/favicon.png',
-      name: 'World Vision International',
-      amount: 299.3,
-      selected: false
-    },    
-  ]
-
+  charities: Charity[] = [];
+  charitySelected1: Charity;
+  charitySelected2: Charity;
+  charitiesSelected : Charity[] = [];
+  percentageToDonate: number = 0;
+  charitySelectedQuantity: number = 0;
+  
   constructor(private _api: ApiService,
     public _utils : UtilsService) { 
       this.userSesion = this._api.userSesion;
     }
 
-  ngOnInit() {
+ async ngOnInit() {
+
+    try {
+
+      this.loading = true;
+      const response = await this._api.getAllGive();
+      this.loading = false;
+      //console.log(response);
+      this.charities = response as Charity[];
+      //console.log(this.charities);
+      this.charities.forEach(charityIterable => {
+        charityIterable.selected = false;
+      });
+
+    } catch (error) {
+      this.loading = false;
+      this._utils.showAlertMessage('Info', error['error'].message ? error['error'].message : 'error');
+      console.log(error);
+
+    }
+
   }
 
-  showAlertConfirmGivin() {
-    this._utils.showAlertConfirmGivin();
+  ionViewWillEnter() {
+    this.refreshData();
+  }
+
+  selectCharityToDonate(index: number, charitySelect: Charity) {
+
+    console.log(this.charitySelectedQuantity);
+    console.log(charitySelect.id);
+
+    for (const charityIterable of this.charities) {
+            
+      if( this.charities[index].selected && (charityIterable.id === this.charities[index].id)){
+        console.log('same select');
+
+        this.charitiesSelected = this.charitiesSelected.filter(
+          charityFilter => charityFilter.id !== charitySelect.id
+        );
+        this.charities[index].selected = false;
+        this.charitySelectedQuantity--;
+        break;
+
+      } else {
+
+        if( !this.charities[index].selected && this.charitySelectedQuantity < 2 ) {
+          console.log('not selected')
+          this.charities[index].selected = true;
+          this.charitiesSelected.push(this.charities[index]);       
+          this.charitySelectedQuantity++;
+          break;
+          
+        }
+
+      }     
+
+      
+    }
+    console.log(this.charitiesSelected);
+    console.log(this.charities);
+    // console.log('Selected charity ');
+    // console.log(charity);
+    // this.charities.forEach(charityIterable => {
+    //   charityIterable.selected = false;
+    //   charity.selected = true;
+    // });
+
+    // this.charitySelected1 = charity;
+
+  }
+
+  showAlertConfirmGivinFromWallet() {
+    this._utils.showAlertConfirmGivinFromWallet();
   }
 
   trackByFn(index: number, charity: any): any {
     return charity.id;
   }
+  
+  refreshData() {
+    // this.charities.forEach(charityIterable => {
+    //   charityIterable.selected = false;
+    // });
+    // this.charitySelected = null;
+    // this.amountToDonate = 0;
+  }
 
+  calculatePercentageToShow(){
+    return (this.percentageToDonate / this.charitiesSelected.length);
+  }
 }

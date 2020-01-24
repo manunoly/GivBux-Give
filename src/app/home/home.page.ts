@@ -81,8 +81,8 @@ export class HomePage implements OnInit {
 
   }
 
-  showAlertConfirmGivin() {
-    this._utils.showAlertConfirmGivin();
+  showAlertConfirmGivinFromWallet() {
+    this._utils.showAlertConfirmGivinFromWallet();
   }
 
 

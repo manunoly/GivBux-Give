@@ -97,13 +97,14 @@ export class ApiService {
     return this._http.post( url, params, { headers: headers }).toPromise();
   }
 
-  giveSaveDefaultAutomatic(id_charity1 : string , id_charity2? : string) { //Promise<Object>
+  giveSaveDefaultAutomatic(id_charity1 : string, percentageToDonate : number , id_charity2? : string) { //Promise<Object>
 
     const url = this.apiUrl + "givesavedefault";
     const headers = this.getHeaders();
 
     let params = {   
       token: this.token,  
+      percentage: percentageToDonate,
       id_charity1: id_charity1
     };
 
@@ -111,7 +112,18 @@ export class ApiService {
 
     console.log(params);
 
-    //return this._http.post( url, params, { headers: headers }).toPromise();
+    return this._http.post( url, params, { headers: headers }).toPromise();
+  }
+
+  getGiveDefault(){
+    const url = this.apiUrl + "getgivedefault";
+    const headers = this.getHeaders();
+
+    const params = {   
+      token: this.token,  
+    };
+
+    return this._http.post( url, params, { headers: headers }).toPromise();
   }
 
   getHistorical() : Promise<Object> {

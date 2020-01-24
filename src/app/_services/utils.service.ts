@@ -90,8 +90,8 @@ export class UtilsService {
     });
 
     const subHeader = (charityName2) ?
-    (`Are you sure you want to Donate ${percentageToDonate/2}% to ${charityName1} And ${charityName2} ?`) :
-    (`Are you sure you want to Donate ${percentageToDonate}% to ${charityName1}?`)
+    (`You are donating a total of ${percentageToDonate}%. ${charityName1} (${percentageToDonate/2}%) | ${charityName2} ${percentageToDonate/2}% `) :
+    (`You are donating a total of ${percentageToDonate}% to ${charityName1} `)
 
       const alert = await this.alertController.create({
         header: 'CONFIRM YOUR DONATION',
@@ -154,6 +154,33 @@ export class UtilsService {
       await alert.present();
       return promise;
   
+  }
+
+  async showAlertWaitConfirmationBackDropFalse(title: string, message: string = '') : Promise<boolean> {
+
+    let resolveFunction: (confirm: boolean) => void;
+    const promise = new Promise<boolean>(resolve => {
+      resolveFunction = resolve;
+    });
+
+    const alert = await this.alertController.create({
+      header: `${title}`,
+      subHeader: `${message}`,
+      backdropDismiss: false,
+      buttons: [
+        {
+          text: 'Accept',
+          cssClass: 'secondary',
+          handler: () => {
+            resolveFunction(true)
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+    return promise;
+
   }
 
   async showAlertMessage(title: string, message: string = '') {

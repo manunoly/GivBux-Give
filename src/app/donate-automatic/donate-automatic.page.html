@@ -52,7 +52,8 @@
             <!-- Col for img  -->
             <ion-col size="12">
               <div class="img-box">
-                <ion-img [src]="image"></ion-img>
+                <ion-img *ngIf="charity?.image" [src]="charity?.image"></ion-img>
+                <ion-img *ngIf="!charity?.image" [src]="image"></ion-img>
               </div>
             </ion-col>
 

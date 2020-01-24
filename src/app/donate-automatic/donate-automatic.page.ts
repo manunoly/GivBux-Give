@@ -17,8 +17,6 @@ export class DonateAutomaticPage implements OnInit {
   image = './assets/icon/favicon.png';
 
   charities: Charity[] = [];
-  charitySelected1: Charity;
-  charitySelected2: Charity;
   charitiesSelected : Charity[] = [];
   percentageToDonate: number = 0;
   charitySelectedQuantity: number = 0;
@@ -37,7 +35,7 @@ export class DonateAutomaticPage implements OnInit {
       this.loading = false;
       //console.log(response);
       this.charities = response as Charity[];
-      //console.log(this.charities);
+      console.log(this.charities);
       this.charities.forEach(charityIterable => {
         charityIterable.selected = false;
       });
@@ -57,13 +55,13 @@ export class DonateAutomaticPage implements OnInit {
 
   selectCharityToDonate(index: number, charitySelect: Charity) {
 
-    console.log(this.charitySelectedQuantity);
-    console.log(charitySelect.id);
+    //console.log(this.charitySelectedQuantity);
+    //console.log(charitySelect.id);
 
     for (const charityIterable of this.charities) {
             
       if( this.charities[index].selected && (charityIterable.id === this.charities[index].id)){
-        console.log('same select');
+        //console.log('same select');
 
         this.charitiesSelected = this.charitiesSelected.filter(
           charityFilter => charityFilter.id !== charitySelect.id
@@ -75,7 +73,7 @@ export class DonateAutomaticPage implements OnInit {
       } else {
 
         if( !this.charities[index].selected && this.charitySelectedQuantity < 2 ) {
-          console.log('not selected')
+          //console.log('not selected')
           this.charities[index].selected = true;
           this.charitiesSelected.push(this.charities[index]);       
           this.charitySelectedQuantity++;
@@ -88,15 +86,6 @@ export class DonateAutomaticPage implements OnInit {
       
     }
     console.log(this.charitiesSelected);
-    console.log(this.charities);
-    // console.log('Selected charity ');
-    // console.log(charity);
-    // this.charities.forEach(charityIterable => {
-    //   charityIterable.selected = false;
-    //   charity.selected = true;
-    // });
-
-    // this.charitySelected1 = charity;
 
   }
 

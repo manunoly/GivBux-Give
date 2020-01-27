@@ -99,16 +99,14 @@
           [disabled]=" !(amountToDonate > 0) || !charitySelected " (click)="giveDonateToCharity()">DONATE</ion-button>
       </ion-col>
 
-      <!-- HISTORY BUTTON -->
-
-      <ion-col size="12" class="ion-margin-vertical">
-        <div class="container-fab-history">
-          <ion-fab-button color="primary" class="fab-history" [routerLink]="['/history']"
-            routerLinkActive="router-link-active">History</ion-fab-button>
-        </div>
-      </ion-col>
-
-
     </ion-row>
   </ion-grid>
+
+    <!-- HISTORY BUTTON -->
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="container-fab-history">
+      <ion-fab-button color="primary" class="fab-history" [routerLink]="['/history']"
+        routerLinkActive="router-link-active">History</ion-fab-button>
+    </ion-fab>
+
 </ion-content>

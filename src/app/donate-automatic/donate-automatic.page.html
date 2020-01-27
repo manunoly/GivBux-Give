@@ -22,7 +22,8 @@
       <ion-col size="12">
         <ion-item>
           <ion-label position="floating">Percentage to donate</ion-label>
-          <ion-input type='number' min="1" max="100" step="1" inputmode="numeric" class="ion-text-center" [(ngModel)]="percentageToDonate"></ion-input>
+          <ion-input type='number' min="1" max="100" step="1" inputmode="numeric" class="ion-text-center"
+            [(ngModel)]="percentageToDonate"></ion-input>
           <ion-text color="dark" slot="end" class="ion-align-self-end">%</ion-text>
         </ion-item>
       </ion-col>
@@ -38,7 +39,8 @@
 
       <ion-col size="12">
         <ion-item lines="none" class="item-icon-help-bottom">
-          <ion-icon name="help-circle-outline" color="secondary" slot="end" size="large" (click)="callAlertInfo()"></ion-icon>
+          <ion-icon name="help-circle-outline" color="secondary" slot="end" size="large" (click)="callAlertInfo()">
+          </ion-icon>
         </ion-item>
       </ion-col>
 
@@ -48,7 +50,8 @@
         <ion-col *ngFor="let charity of charities ; let i=index ; trackBy:trackByFn" size="4">
 
           <!-- Charities -->
-          <ion-row *ngIf="charity.name !== 'Other' " class="ion-align-items-center" (click)="selectCharityToDonate(i , charity)">
+          <ion-row *ngIf="charity.name !== 'Other' " class="ion-align-items-center"
+            (click)="selectCharityToDonate(i , charity)">
             <!-- Col for img  -->
             <ion-col size="12">
               <div class="img-box">
@@ -74,14 +77,15 @@
           <ion-row *ngIf="charity.name === 'Other' ">
             <ion-col size="4">
               <div class="container-fab-other">
-                <ion-fab-button class="fab-other" color="primary" (click)="selectCharityToDonate(i , charity)">Other</ion-fab-button>
+                <ion-fab-button class="fab-other" color="primary" (click)="selectCharityToDonate(i , charity)">Other
+                </ion-fab-button>
               </div>
             </ion-col> -->
 
             <!-- Percentage Col -->
             <ion-col class="ion-text-center ion-margin-bottom" size="12">
               <div *ngIf="charity?.selected">
-              <span class="border-percentage"><b>{{calculatePercentageToShow() | number:'1.0-2'}}%</b></span>
+                <span class="border-percentage"><b>{{calculatePercentageToShow() | number:'1.0-2'}}%</b></span>
               </div>
             </ion-col>
 
@@ -104,7 +108,9 @@
       <!-- SAVE BUTTON -->
 
       <ion-col size="12">
-        <ion-button color="primary" shape="round" expand="block" [disabled]=" !(percentageToDonate > 0) || !(this.charitiesSelected.length > 0) " (click)="setGiveDefaultDonation()" >SAVE</ion-button>
+        <ion-button color="primary" shape="round" expand="block"
+          [disabled]=" !(percentageToDonate > 0) || !(this.charitiesSelected.length > 0) "
+          (click)="setGiveDefaultDonation()">SAVE</ion-button>
       </ion-col>
 
       <!-- Donate From my wallet button -->
@@ -115,17 +121,14 @@
         </ion-button>
       </ion-col>
 
-
-      <!-- HISTORY BUTTON -->
-
-      <ion-col size="12" class="ion-margin-vertical">
-        <div class="container-fab-history">
-          <ion-fab-button color="primary" class="fab-history" [routerLink]="['/history']"
-            routerLinkActive="router-link-active">History</ion-fab-button>
-        </div>
-      </ion-col>
-
-
     </ion-row>
   </ion-grid>
+
+  <!-- HISTORY BUTTON -->
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="container-fab-history">
+    <ion-fab-button color="primary" class="fab-history" [routerLink]="['/history']"
+      routerLinkActive="router-link-active">History</ion-fab-button>
+  </ion-fab>
+
 </ion-content>

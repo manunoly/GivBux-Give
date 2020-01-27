@@ -22,6 +22,7 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
+    console.log('onInit');
     this.checkTokenValidation();
   }
 
@@ -31,13 +32,37 @@ export class HomePage implements OnInit {
     if (this._api.afterTransferSuccess) {
       this._api.afterTransferSuccess = false; //Setting variable controller to false after transfer success
       console.log('reEnter on Home after transfer');
-      this.checkTokenValidation();
+      this.getRefresDataUser();
 
     }
   }
 
   trackByFn(index: number, charity: any): any {
     return charity.id;
+  }
+
+  async getRefresDataUser(){
+
+    try {
+
+      this.loading = true;
+      await this._utils.showLoading();
+      const responseUser = await this._api.getDataGiveUser();
+      await this._utils.dismissLoading();
+      this.loading = false;
+      this.tokenValid = true;
+      console.log(responseUser);
+
+      // SETTING UP DATA ON SERVICE AND COMPONENT
+      this._api.userSesion = responseUser;
+      this.userSesion = responseUser;
+
+
+    } catch (error) {
+      await this._utils.dismissLoading();
+      this.loading = false;
+      console.log(error['error'].error ? error['error'].message : 'error');
+    }
   }
 
   checkTokenValidation() {
@@ -47,7 +72,8 @@ export class HomePage implements OnInit {
     }
     else if (this._api.refreshSameTokenSession()) {
       console.log('retrieve token from session => ' + this._api.token);
-      this.giveValidateToken(this._api.token);
+      if(!this._api.afterTransferSuccess)
+        this.getRefresDataUser();
     }
   }
 

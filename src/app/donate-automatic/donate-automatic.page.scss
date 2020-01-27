@@ -1,0 +1,26 @@
+.container-selected-charities {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  .img-box-selected {
+    float: right;
+    width: 5vmax;
+    height: 5vmax;
+  }
+}
+
+.fab-top-selected {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  ion-fab-button {
+    width: 5vmax;
+    height: 5vmax;
+    .img-box-selected {
+      width: 4vmax;
+      height: 4vmax;
+    }
+  }
+}

@@ -183,11 +183,12 @@ export class UtilsService {
 
   }
 
-  async showAlertMessage(title: string, message: string = '') {
+  async showAlertMessage(title: string, subtitle: string = '' , message: string = '') {
 
     const alert = await this.alertController.create({
       header: `${title}`,
-      subHeader: `${message}`
+      subHeader: `${subtitle}`,
+      message: `${message}`,
     });
 
     await alert.present();

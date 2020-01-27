@@ -1,8 +1,9 @@
 <ion-header no-border>
   <ion-toolbar class="headerT ion-text-center">
     <ion-buttons slot="start">
-      <ion-back-button *ngIf="inicio" color="secondary" defaultHref="home" [text]="''"></ion-back-button>
-      <ion-button *ngIf="!inicio" fill="clear">
+      <ion-back-button *ngIf="inicio && regresarApp" color="secondary"  defaultHref="home" [text]="''" (click)="returnApp()"></ion-back-button> 
+      <ion-back-button *ngIf="inicio && !regresarApp" color="secondary" defaultHref="home" [text]="''"></ion-back-button>
+      <ion-button *ngIf="!inicio && !regresarApp" fill="clear">
         <ion-icon [hidden]="!inicio" slot="icon-only" name="menu"></ion-icon>
       </ion-button>
     </ion-buttons>

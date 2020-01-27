@@ -1,5 +1,5 @@
 <!-- MAIN TEXT HEADER WITH ICON RIGHT -->
-<app-header-givbux [inicio]=true [fin]=false></app-header-givbux>
+<app-header-givbux [inicio]=true [fin]=false [regresarApp]=false></app-header-givbux>
 
 <ion-content fullscreen class="ion-text-center ion-padding colorBack">
 
@@ -37,7 +37,7 @@
 
       <ion-col size="12">
         <ion-item lines="none" class="item-icon-help-bottom">
-          <ion-icon name="help-circle-outline" color="secondary" slot="end" size="large"></ion-icon>
+          <ion-icon name="help-circle-outline" color="secondary" slot="end" size="large" (click)="callAlertInfo()"></ion-icon>
         </ion-item>
       </ion-col>
 

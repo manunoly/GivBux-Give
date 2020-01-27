@@ -94,6 +94,16 @@ export class DonateDirectlyPage implements OnInit {
     this.amountToDonate = 0;
   }
 
+  callAlertInfo() {
+    this._utils.showAlertMessage('Help', 
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec cursus velit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.'
+    +' Etiam tristique risus eu tincidunt auctor. Ut et sollicitudin ex. Phasellus ornare, lacus vel lacinia interdum, massa magna iaculis nisl, at posuere velit velit in justo. '
+    +'Sed varius risus nec neque imperdiet accumsan. Aliquam eu consectetur sapien, eget tristique nunc. Nullam tincidunt magna non tellus porttitor, a pulvinar ligula varius. '
+    +'Morbi imperdiet magna purus, in dictum nisi convallis et. Aenean lacus velit, semper sed tempor vel, auctor nec arcu. Praesent mollis eget velit ut rutrum. Quisque eu purus blandit sem condimentum sodales.'
+    +'Aenean eu porttitor risus, luctus iaculis sem.Aliquam erat volutpat.Mauris nisi nibh, mollis vel congue sit amet, porta in nisl.Fusce non ullamcorper orci.Aenean volutpat ullamcorper iaculis.Nunc eget consectetur velit.'
+    +'Pellentesque ante urna, placerat vitae nunc sit amet, accumsan scelerisque nulla.Maecenas ut scelerisque purus')
+  }
+
   trackByFn(index: number, charity: any): any {
     return charity.id;
   }

@@ -1,5 +1,5 @@
 <!-- MAIN TEXT HEADER WITH ICON RIGHT -->
-<app-header-givbux [inicio]=false [fin]=false></app-header-givbux>
+<app-header-givbux [inicio]=true [fin]=false [regresarApp]=true></app-header-givbux>
 
 <ion-content fullscreen class="ion-text-center ion-padding colorBack">
 
@@ -24,7 +24,7 @@
       <!-- HELP ICON -->
       <ion-col size="12">
         <ion-item lines="none" class="item-icon-help-top">
-          <ion-icon name="help-circle-outline" color="secondary" slot="end" size="large"></ion-icon>
+          <ion-icon name="help-circle-outline" color="secondary" slot="end" size="large" (click)="callAlertInfo()"></ion-icon>
         </ion-item>
       </ion-col>
 
@@ -48,7 +48,7 @@
       <!-- HELP ICON -->
       <ion-col size="12">
         <ion-item lines="none" class="item-icon-help-top">
-          <ion-icon name="help-circle-outline" color="secondary" slot="end" size="large"></ion-icon>
+          <ion-icon name="help-circle-outline" color="secondary" slot="end" size="large" (click)="callAlertInfo()"></ion-icon>
         </ion-item>
       </ion-col>
 
@@ -71,7 +71,7 @@
       <!-- HELP ICON -->
       <ion-col size="12">
         <ion-item lines="none" class="item-icon-help-top">
-          <ion-icon name="help-circle-outline" color="secondary" slot="end" size="large"></ion-icon>
+          <ion-icon name="help-circle-outline" color="secondary" slot="end" size="large" (click)="callAlertInfo()"></ion-icon>
         </ion-item>
       </ion-col>
 

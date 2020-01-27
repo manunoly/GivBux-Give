@@ -18,7 +18,7 @@ export class HomePage implements OnInit {
   constructor(private _api: ApiService,
     private route: ActivatedRoute,
     public _utils: UtilsService) {
-    
+
   }
 
   ngOnInit() {
@@ -26,9 +26,9 @@ export class HomePage implements OnInit {
   }
 
   // For Refresh home after some success transfer
-  ionViewWillEnter(){ 
+  ionViewWillEnter() {
     //check after transfer param
-    if(this._api.afterTransferSuccess){
+    if (this._api.afterTransferSuccess) {
       this._api.afterTransferSuccess = false; //Setting variable controller to false after transfer success
       console.log('reEnter on Home after transfer');
       this.checkTokenValidation();
@@ -40,19 +40,19 @@ export class HomePage implements OnInit {
     return charity.id;
   }
 
-  checkTokenValidation(){
-    if (this.route.snapshot.paramMap.get('token')){
+  checkTokenValidation() {
+    if (this.route.snapshot.paramMap.get('token')) {
       console.log('token recieved => ' + this.route.snapshot.paramMap.get('token'));
       this.giveValidateToken(this.route.snapshot.paramMap.get('token'))
-    }     
-    else if (this._api.refreshSameTokenSession()){
+    }
+    else if (this._api.refreshSameTokenSession()) {
       console.log('retrieve token from session => ' + this._api.token);
       this.giveValidateToken(this._api.token);
-    }   
+    }
   }
 
   async giveValidateToken(token: string) {
-    
+
     console.log('checking token...');
 
     try {
@@ -83,6 +83,16 @@ export class HomePage implements OnInit {
 
   showAlertConfirmGivinFromWallet() {
     this._utils.showAlertConfirmGivinFromWallet();
+  }
+
+  callAlertInfo() {
+    this._utils.showAlertMessage('Help', 
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec cursus velit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.'
+    +' Etiam tristique risus eu tincidunt auctor. Ut et sollicitudin ex. Phasellus ornare, lacus vel lacinia interdum, massa magna iaculis nisl, at posuere velit velit in justo. '
+    +'Sed varius risus nec neque imperdiet accumsan. Aliquam eu consectetur sapien, eget tristique nunc. Nullam tincidunt magna non tellus porttitor, a pulvinar ligula varius. '
+    +'Morbi imperdiet magna purus, in dictum nisi convallis et. Aenean lacus velit, semper sed tempor vel, auctor nec arcu. Praesent mollis eget velit ut rutrum. Quisque eu purus blandit sem condimentum sodales.'
+    +'Aenean eu porttitor risus, luctus iaculis sem.Aliquam erat volutpat.Mauris nisi nibh, mollis vel congue sit amet, porta in nisl.Fusce non ullamcorper orci.Aenean volutpat ullamcorper iaculis.Nunc eget consectetur velit.'
+    +'Pellentesque ante urna, placerat vitae nunc sit amet, accumsan scelerisque nulla.Maecenas ut scelerisque purus')
   }
 
 

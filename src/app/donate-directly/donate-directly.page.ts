@@ -62,7 +62,7 @@ export class DonateDirectlyPage implements OnInit {
         this._utils.showLoading();
         const response = await this._api.giveToCharity(this.charitySelected.id, this.amountToDonate);
         this._utils.dismissLoading();
-        this.router.navigate(['/success', 'directly', { charity1: this.charitySelected.name, amount: this.amountToDonate }])
+        this.router.navigate(['/user/success', 'directly', { charity1: this.charitySelected.name, amount: this.amountToDonate }])
 
       } catch (error) {
         this._utils.dismissLoading();

@@ -46,6 +46,6 @@ export class SuccessPage implements OnInit {
   goHome(){
     //Setting flag for reload data on Home view after transfer operation
     this._api.afterTransferSuccess = true;
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 }

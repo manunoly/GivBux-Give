@@ -72,7 +72,7 @@ export class DonateAutomaticPage implements OnInit {
         await this._utils.dismissLoading();
         const responseAlert = await this._utils.showAlertWaitConfirmationBackDropFalse(response as string);
         if (responseAlert) {
-          this.router.navigate(['/home'])
+          this.router.navigate(['/'])
         }
         // this.router.navigate(['/success', 'directly', { charity1: this.charitySelected.name, amount: this.amountToDonate }])
 

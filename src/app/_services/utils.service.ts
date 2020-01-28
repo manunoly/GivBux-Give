@@ -208,7 +208,7 @@ export class UtilsService {
       const response = await this._api.donateFromWallet(amount, this._api.token);
       await this.dismissLoading();
       console.log(response);
-      this.router.navigate(['/success', 'holding', { amount }]);
+      this.router.navigate(['/user/success', 'holding', { amount }]);
 
     } catch (error) {
 

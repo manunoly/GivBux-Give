@@ -90,7 +90,7 @@ export class UtilsService {
     });
 
     const subHeader = (charityName2) ?
-    (`You are donating a total of ${percentageToDonate}%. ${charityName1} (${percentageToDonate/2}%) | ${charityName2} ${percentageToDonate/2}% `) :
+    (`You are donating a total of ${percentageToDonate}%. ${charityName1} (${percentageToDonate/2}%) | ${charityName2} (${percentageToDonate/2}%) `) :
     (`You are donating a total of ${percentageToDonate}% to ${charityName1} `)
 
       const alert = await this.alertController.create({
@@ -99,7 +99,7 @@ export class UtilsService {
         message: '',
         buttons: [
           {
-            text: 'Donate',
+            text: 'Confirm',
             cssClass: 'secondary',
             handler: () => {
               resolveFunction(true)
@@ -134,7 +134,7 @@ export class UtilsService {
         message: '',
         buttons: [
           {
-            text: 'Donate',
+            text: 'Confirm',
             cssClass: 'secondary',
             handler: () => {
               resolveFunction(true)

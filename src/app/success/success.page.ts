@@ -9,7 +9,7 @@ import { ApiService } from '../_services/api.service';
 })
 export class SuccessPage implements OnInit {
   
-  title = 'Rewards';
+  title = 'Give';
   amount = 10;
   donatedTo = '';
   imageSucces = './assets/img/hands.png';

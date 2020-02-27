@@ -14,10 +14,14 @@
       <ion-col size="12">
         <ion-text color="primary" class="fs-text-09">
 
-          <p>
+          <p *ngIf="donatedTo != '' ">
             You have donated {{ amount | currency: 'USD'}} to
           </p>
 
+          <p *ngIf="donatedTo == '' ">
+            You have donated {{ amount | currency: 'USD'}}
+          </p>
+          
           <h2><b>{{donatedTo | uppercase}}</b></h2>
 
         </ion-text>

@@ -31,11 +31,7 @@
 }
 
 .colorBack {
-  --background: linear-gradient(
-    to bottom,
-    var(--ion-color-primary) 45%,
-    white 1%
-  );
+  --background: linear-gradient(to bottom, var(--ion-color-primary) 45%, white 1%);
 }
 
 .roundGrid {
@@ -44,45 +40,45 @@
   min-height: 300px;
 }
 
-.borderSelectedCharity{
+.borderSelectedCharity {
   border: 2px solid var(--ion-color-primary);
 }
 
 // Some loading basic styles
-.loading-wrapper{
+.loading-wrapper {
   --spinner-color: var(--ion-color-primary);
 }
 
 // Some alert basic styles
 .alert-wrapper {
-  .alert-button.sc-ion-alert-ios:first-child{
+  .alert-button.sc-ion-alert-ios:first-child {
     font-weight: 700;
   }
-  .alert-button.sc-ion-alert-ios:last-child{
+  .alert-button.sc-ion-alert-ios:last-child {
     font-weight: 400;
     color: var(---ion-color-medium);
   }
-  .alert-button.sc-ion-alert-md:first-child{
+  .alert-button.sc-ion-alert-md:first-child {
     font-weight: 700;
   }
-  .alert-button.sc-ion-alert-md:last-child{
+  .alert-button.sc-ion-alert-md:last-child {
     color: var(---ion-color-medium);
   }
   .alert-title {
     color: var(--ion-color-primary) !important;
     text-align: center;
   }
-  
-  .alert-sub-title{
+
+  .alert-sub-title {
     color: var(--ion-color-dark) !important;
     text-align: center;
   }
-  
+
   .alert-message {
     color: var(--ion-color-danger) !important;
     text-align: center;
   }
-  .alert-input{
+  .alert-input {
     text-align: center;
   }
 }
@@ -100,7 +96,6 @@
 }
 
 // SIZE FOR TEXT
-
 
 .fs-text-06 {
   font-size: 1em;
@@ -125,7 +120,6 @@
 }
 
 @media (max-width: 991px) {
-
   .fs-text-06 {
     font-size: 0.6em;
   }
@@ -147,5 +141,14 @@
   .fs-text-12 {
     font-size: 1.2em;
   }
-  
+}
+
+.mx-0 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.px-0 {
+  padding-top: 0;
+  padding-bottom: 0;
 }

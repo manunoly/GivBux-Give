@@ -23,7 +23,7 @@ export class SuccessPage implements OnInit {
 
     if (this.route.snapshot.paramMap.get('typepage') == 'holding') {
 
-      this.donatedTo = this.route.snapshot.paramMap.get('typepage') + ' Balance';
+      this.donatedTo = '';
 
     } else if(this.route.snapshot.paramMap.get('typepage') == 'automatic') {
 

@@ -5,7 +5,7 @@
 
   <div class="container-selected-charities">
     <ion-row>
-  
+
       <ion-col size="12" *ngFor="let charitySelected of charitiesSelected; trackBy:trackByFn">
         <div class="img-box-selected" *ngIf="charitySelected.name !== 'Other' ">
           <ion-img *ngIf="charitySelected?.image" [src]="charitySelected?.image"></ion-img>
@@ -15,15 +15,15 @@
           <ion-fab-button class="img-box-selected" color="primary">Other
           </ion-fab-button>
         </ng-container>
-      </ion-col>    
-      
+      </ion-col>
+
 
     </ion-row>
 
   </div>
 
   <!-- fab placed to the top end -->
-    <!-- <ion-fab vertical="top" horizontal="end" slot="fixed" class="fab-top-selected">    
+  <!-- <ion-fab vertical="top" horizontal="end" slot="fixed" class="fab-top-selected">    
       <ion-fab-button *ngFor="let charitySelected of charitiesSelected; trackBy:trackByFn" color="primary" class="ion-margin-bottom">
         <div class="img-box-selected" *ngIf="charitySelected.name !== 'Other' ">
           <ion-img *ngIf="charitySelected?.image" [src]="charitySelected?.image"></ion-img>
@@ -36,17 +36,27 @@
     </ion-fab> -->
 
   <ion-text color="light">
-    <h5 class="ion-padding-vertical">{{title | uppercase}}</h5>
+    <h5>{{title | uppercase}}</h5>
   </ion-text>
 
   <ion-text color="light">
-    <h6 class="ion-padding-bottom">
+    <h6 class="ion-padding-top">
       DONATION HOLDING BALANCE
       <br />
       <span
         class="font-size-balance">{{ (userSesion?.user_balance_give ? userSesion.user_balance_give : 0) | currency: 'USD'}}</span>
     </h6>
   </ion-text>
+
+  <ion-grid>
+    <ion-row class="ion-padding-bottom">
+      <ion-col class="ion-text-start" size="12" *ngFor="let charitySelected of charitiesSelected; trackBy:trackByFn">
+        <ion-text color="light">
+          <p class="mx-0">{{charitySelected.name | titlecase}}</p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <!-- MAIN BODY ROUND GRID -->
   <ion-grid class="roundGrid">

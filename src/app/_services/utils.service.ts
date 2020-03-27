@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class UtilsService {
 
   loading;
-  textIcon1 = 'Click on the rewards tab and use the sliding scale feature at the top of the screen to set your donation percentahe. A minimum of 1% is required to begin receiving rewards.';
+  textIcon1 = 'Click on the rewards tab and use the sliding scale feature at the top of the screen to set your donation percentage. A minimum of 1% is required to begin receiving rewards.';
   textIcon2 = 'The amount in your donations Holdings balance will be distributed automatically to your selected charity or charities.';
   textIcon3 = 'Make a one time donation from your wallet balance. The amount will be distributed to chosen a charity or charities.';
 
@@ -137,7 +137,7 @@ export class UtilsService {
       message: '',
       buttons: [
         {
-          text: 'Confirm',
+          text: 'Donate',
           cssClass: 'secondary',
           handler: () => {
             resolveFunction(true)

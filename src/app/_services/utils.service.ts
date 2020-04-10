@@ -41,7 +41,7 @@ export class UtilsService {
 
     const alert = await this.alertController.create({
       header: 'CONFIRM GIVING',
-      subHeader: 'Enter the amount you wish to donate. ' + `Your Balance is $${this._api.userSesion.user_balance_give ? this._api.userSesion.user_balance_give : '0.00'}`,
+      subHeader: 'Enter the amount you wish to donate. ' + `Your Balance is $${this._api.userSesion.user_balanace ? this._api.userSesion.user_balanace : '0.00'}`,
       message: '',
       inputs: [
         {

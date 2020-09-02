@@ -1,0 +1,314 @@
+.header-md::after {
+  content: none;
+}
+
+.header-givbux {
+  --background: var(--ion-color-primary) !important;
+
+  ion-toolbar {
+    --background: var(--ion-color-primary) !important;
+    --ion-color-base: var(--ion-color-primary) !important;
+    --color: var(--ion-color-light);
+    &.toolbar-none {
+      height: 0;
+    }
+  }
+}
+
+.shape-header-img {
+  width: 100%;
+  margin-bottom: -80px;
+  height: 0;
+}
+
+.paddingLogo-middle {
+  padding-top: 80px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.paddingLogo-bottom {
+  padding-top: 80px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.padding-top-header-content {
+  padding-top: 25vmin;
+}
+
+.padding-top-header-content-home {
+  padding-top: 20vmin;
+}
+
+.padding-top-header-content-minus {
+  padding-top: 10vmin;
+}
+
+.padding-top-header-content-more {
+  padding-top: 30vmin;
+}
+
+.logo-shape-header {
+  width: 64px;
+  position: absolute;
+}
+
+.content-light {
+  --background: var(--ion-color-light-givbux);
+}
+
+.content-light-footer {
+  background: var(--ion-color-light-givbux);
+  --background: var(--ion-color-light-givbux);
+}
+
+.content-dark {
+  --background: var(--ion-color-dark);
+}
+.content-primary {
+  --background: var(--ion-color-primary);
+}
+
+.ion-page {
+  background: var(--ion-color-light-givbux);
+}
+
+.container-dark {
+  --background: var(--ion-color-dark);
+  background: var(--ion-color-dark);
+}
+
+.container-light {
+  --background: var(--ion-color-light-givbux);
+  background: var(--ion-color-light-givbux);
+}
+
+.btn-border-medium {
+  border: 1px solid var(--ion-color-medium-givbux);
+  border-radius: 10px;
+  height: 3.5rem;
+}
+
+.btn-thumbnail-page-givbux {
+  height: 10vmax;
+  font-size: 1rem;
+
+  .thumbnail-img {
+    // margin-right: 10vw;
+    // width: 13vmin;
+    // height: 13vmin;
+    width: 7vmax;
+    height: 8vmax;
+    img {
+      object-fit: contain;
+    }
+  }
+}
+
+//==============================
+//==============================
+//============================== CUSTOM CSS
+//==============================
+//==============================
+
+.header-sticky > ion-header > ion-toolbar {
+  background: var(--ion-color-primary) !important;
+}
+
+.header-sticky > ion-header > div.shape-header-img > img {
+  background: var(--ion-color-light-givbux);
+}
+
+.header-sticky-dark > ion-header > div.shape-header-img > img {
+  background: var(--ion-color-dark);
+}
+
+.image-container-hexagon {
+  -webkit-clip-path: polygon(0 24%, 50% 0, 100% 25%, 100% 76%, 50% 100%, 0 76%);
+  clip-path: polygon(0 24%, 50% 0, 100% 25%, 100% 76%, 50% 100%, 0 76%);
+  background-color: transparent;
+  /* display: block; */
+  width: 5rem;
+  height: 5.7rem;
+  /* height: 60px; */
+  /* width: 60px; */
+  float: right;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.image-container-hexagon-profile {
+  -webkit-clip-path: polygon(0 24%, 50% 0, 100% 25%, 100% 76%, 50% 100%, 0 76%);
+  clip-path: polygon(0 24%, 50% 0, 100% 25%, 100% 76%, 50% 100%, 0 76%);
+  background-color: transparent;
+  display: block;
+  width: 5rem;
+  height: 5.7rem;
+  margin: auto;
+  margin-top: -11vmin;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.search-givbux {
+  .searchbar-input-container {
+    border: 1px solid var(--ion-color-primary);
+    border-radius: 11px;
+  }
+}
+
+.segment-new-givbux {
+  border-bottom: 3px solid var(--ion-color-primary);
+  --background: var(--ion-color-medium-light);
+  --background-checked: var(--ion-color-primary);
+  --background-hover: rgba(var(--ion-color-primary-rgb, 56, 128, 255), 0.04);
+  --background-activated: rgba(
+    var(--ion-color-primary-rgb, 56, 128, 255),
+    0.16
+  );
+  --color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.6);
+  --color-checked: var(--ion-color-light);
+  --color-checked-disabled: none;
+  --indicator-color: none;
+  --indicator-color-checked: none;
+  --border-color: transparent;
+
+  ion-segment-button {
+    border-radius: 5px 5px 0px 0px;
+    margin: 0 0.5rem;
+    padding: 0.4rem 0;
+  }
+}
+
+.checkbox-givbux {
+  // margin: 0 0.5rem;
+  --border-radius: 50%;
+  --checkmark-color: var(--ion-color-primary);
+  --border-color-checked: var(--ion-color-light);
+  --border-color: var(--ion-color-light);
+  --background: var(--ion-color-light);
+}
+
+.checkbox-givbux-dark {
+  // margin: 0 0.5rem;
+  --border-radius: 50%;
+  --checkmark-color: var(--ion-color-primary);
+  --border-color-checked: var(--ion-color-light);
+  --border-color: var(--ion-color-medium-givbux);
+  --background: var(--ion-color-light);
+}
+
+.ion-activatable {
+  position: relative;
+  // overflow: hidden;
+  // color: inherit;
+}
+
+.customListQuestionSelect {
+  .popover-content {
+    --background: var(--ion-color-light-givbux);
+    color: var(--ion-color-dark);
+
+    ion-list {
+      margin: 8px 0;
+      padding: 0;
+      --background: var(--ion-color-light-givbux);
+    }
+
+    ion-item {
+      --background: var(--ion-color-light-givbux);
+    }
+  }
+}
+
+.modal-advance-filters {
+  --min-width: 90% !important;
+  --max-width: 90% !important;
+}
+
+.avatar-img {
+  margin: auto;
+  img {
+    object-fit: fill;
+  }
+}
+
+/// VIDEO CALLS
+.remote-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill !important;
+
+  #remote-media {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: fill !important;
+  }
+
+  #remote-stream {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: fill !important;
+  }
+
+  video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: fill !important;
+  }
+}
+
+.local-video {
+  position: fixed;
+  top: 3.5rem;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  object-fit: fill !important;
+  z-index: 999;
+
+  #local-media {
+    width: 150px !important;
+    height: 150px !important;
+    // object-fit: fill !important;
+  }
+
+  #local-stream {
+    width: 150px !important;
+    height: 150px !important;
+    // object-fit: fill !important;
+  }
+
+  video {
+    width: 150px !important;
+    height: 150px !important;
+    // object-fit: fill !important;
+  }
+}
+
+//MISC
+.ion-padding-top-1 {
+  padding-top: 1rem;
+}
+.ion-padding-top-2 {
+  padding-top: 2rem;
+}
+.ion-padding-top-3 {
+  padding-top: 3rem;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+.fw-900 {
+  font-weight: 900;
+}

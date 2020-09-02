@@ -1,0 +1,28 @@
+.full-width {
+  width: 100%;
+}
+.small-category {
+  font-size: 65%;
+}
+
+.div-border-top {
+  border-top: 0.5px solid var(--ion-color-medium);
+}
+
+.row-givbux-history {
+  // border-top: 0.5px solid var(--ion-color-medium);
+  border-bottom: 0.5px solid var(--ion-color-medium);
+  color: var(--ion-color-primary);
+  padding: 0.5rem 0;
+}
+.row-givbux-history-padding {
+  // border-top: 0.5px solid var(--ion-color-medium);
+  border-bottom: 0.5px solid var(--ion-color-medium);
+  color: var(--ion-color-primary);
+  padding: 0.5rem;
+}
+.row-givbux-history-no-padding {
+  // border-top: 0.5px solid var(--ion-color-medium);
+  border-bottom: 0.5px solid var(--ion-color-medium);
+  color: var(--ion-color-primary);
+}

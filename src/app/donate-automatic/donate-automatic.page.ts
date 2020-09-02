@@ -15,7 +15,7 @@ export class DonateAutomaticPage implements OnInit {
   userSesion;
 
   loading: boolean = false;
-  image = './assets/icon/favicon.png';
+  image = '/assets/img/givbux-new-logo.svg';
 
   charities: Charity[] = [];
   charitiesSelected: Charity[] = [];

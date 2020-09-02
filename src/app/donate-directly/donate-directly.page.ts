@@ -14,7 +14,7 @@ export class DonateDirectlyPage implements OnInit {
   title = 'Directly Give';
   userSesion;
   loading: boolean = false;
-  image = './assets/icon/favicon.png';
+  image = '/assets/img/givbux-new-logo.svg';
 
   charities: Charity[] = [];
   charitySelected: Charity;

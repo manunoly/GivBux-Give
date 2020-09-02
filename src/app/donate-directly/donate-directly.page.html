@@ -44,40 +44,44 @@
       <!-- NgFor Item Charity -->
       <ng-container *ngIf="!loading">
 
+        <ng-container *ngFor="let charity of charities ; let i=index ; trackBy:trackByFn">
 
-        <ion-col *ngFor="let charity of charities ; let i=index ; trackBy:trackByFn" size="4">
+          <!-- BLOCK FOR STATUS CHARITY -->
+          <ion-col *ngIf="charity.status"  size="4">
+  
+            <!-- CHARITIES -->
+            <ion-row *ngIf="charity.name !== 'Other'" class="ion-align-items-center"
+              (click)="selectCharityToDonate(i , charity)">
+  
+              <!-- Col for img  -->
+              <ion-col size="12">
+                <div class="img-box" [ngClass]="{'borderSelectedCharity': (charity?.selected)}">
+                  <ion-img *ngIf="charity?.image" [src]="charity?.image"></ion-img>
+                  <ion-img *ngIf="!charity?.image" [src]="image"></ion-img>
+                </div>
+              </ion-col>
+  
+              <!-- Name Col -->
+              <ion-col size="12" class="ion-margin-top">
+                <span class="fs-text-06">{{charity.name | titlecase}}</span>
+              </ion-col>
+  
+            </ion-row>
+  
+            <!-- col FAB Button OTHER -->
+            <ion-row *ngIf="charity.name === 'Other'">
+              <ion-col size="4">
+                <div class="container-fab-other">
+                  <ion-fab-button class="fab-other" color="primary"
+                    [ngClass]="{'borderSelectedCharity': (charity?.selected)}"
+                    (click)="selectCharityToDonate(i , charity)">Other</ion-fab-button>
+                </div>
+              </ion-col>
+            </ion-row>
+  
+          </ion-col>
+        </ng-container>
 
-          <!-- CHARITIES -->
-          <ion-row *ngIf="charity.name !== 'Other'" class="ion-align-items-center"
-            (click)="selectCharityToDonate(i , charity)">
-
-            <!-- Col for img  -->
-            <ion-col size="12">
-              <div class="img-box" [ngClass]="{'borderSelectedCharity': (charity?.selected)}">
-                <ion-img *ngIf="charity?.image" [src]="charity?.image"></ion-img>
-                <ion-img *ngIf="!charity?.image" [src]="image"></ion-img>
-              </div>
-            </ion-col>
-
-            <!-- Name Col -->
-            <ion-col size="12" class="ion-margin-top">
-              <span class="fs-text-06">{{charity.name | titlecase}}</span>
-            </ion-col>
-
-          </ion-row>
-
-          <!-- col FAB Button OTHER -->
-          <ion-row *ngIf="charity.name === 'Other' ">
-            <ion-col size="4">
-              <div class="container-fab-other">
-                <ion-fab-button class="fab-other" color="primary"
-                  [ngClass]="{'borderSelectedCharity': (charity?.selected)}"
-                  (click)="selectCharityToDonate(i , charity)">Other</ion-fab-button>
-              </div>
-            </ion-col>
-          </ion-row>
-
-        </ion-col>
         <!-- NgFor Item Charity -->
 
       </ng-container>

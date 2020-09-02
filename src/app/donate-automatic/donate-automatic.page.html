@@ -89,7 +89,9 @@
       <!-- NgFor Item Charity -->
       <ng-container *ngIf="!loading">
 
-        <ion-col *ngFor="let charity of charities ; let i=index ; trackBy:trackByFn" size="4">
+        <ng-container *ngFor="let charity of charities ; let i=index ; trackBy:trackByFn">
+
+        <ion-col *ngIf="charity.status" size="4">
 
           <!-- Charities -->
           <ion-row *ngIf="charity.name !== 'Other' " class="ion-align-items-center"
@@ -135,6 +137,8 @@
 
         </ion-col>
         <!-- NgFor Item Charity -->
+
+        </ng-container>
 
       </ng-container>
 

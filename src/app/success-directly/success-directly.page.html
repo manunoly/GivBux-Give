@@ -1,5 +1,5 @@
 <app-new-header-givbux
-  [inicio]="true"
+  [inicio]="false"
   [fin]="false"
   [title]="title | titlecase"
 ></app-new-header-givbux>
@@ -8,7 +8,7 @@
   <div
     *ngIf="charity"
     class="container-banner"
-    [ngStyle]="{backgroundImage: 'url(' + charity?.image + ')'}"
+    [ngStyle]="{backgroundImage: 'url(' + charity?.image_background + ')'}"
   >
     <div class="container-bottom-info">
       <ion-grid>

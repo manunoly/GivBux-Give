@@ -2,15 +2,18 @@
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 10;
+  z-index: 1000;
   .img-box-selected {
     float: right;
     width: 9vmin;
     height: 9vmin;
     font-size: 0.7rem;
+    border-radius: 100%;
+    background: var(--ion-color-light-givbux);
     img {
       width: 100%;
       height: 100%;
+      border-radius: 100%;
     }
   }
 }
@@ -19,7 +22,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 10;
+  z-index: 1000;
   ion-fab-button {
     width: 9vmin;
     height: 9vmin;

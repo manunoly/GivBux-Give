@@ -27,7 +27,7 @@
       </ion-col>
     </ion-row>
 
-    <ion-row class="ion-padding-top">
+    <ion-row class="ion-padding-top" *ngIf="charity?.mission_description">
       <ion-col size="12">
         <ion-text color="medium">
           <h4 class="ion-no-margin ion-text-start row-statement">
@@ -37,11 +37,24 @@
 
         <ion-text color="medium">
           <p class="lh-90">
-            The American Red Cross prevents and alleviates human suffering in
-            the face of emergencies by mobilizing the power of volunteers and
-            the generosity of donors.
+           {{charity?.mission_description}}
           </p>
         </ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-padding-top">
+      <ion-col size="12">
+        <ng-container *ngIf="mediaType == 'video'">
+          <iframe [src]='safeVideoURL' frameborder="0" allowfullscreen></iframe>        
+        </ng-container>
+
+        <ng-container *ngIf="mediaType == 'image'">
+          <div class="container-img-url">
+            <img [src]="charity.url_description">
+          </div>
+         
+        </ng-container>
       </ion-col>
     </ion-row>
 
@@ -54,7 +67,7 @@
       </ion-col>
 
       <ion-col size="6" class="ion-no-margin ion-text-center">
-        <ion-button expand="block" fill="solid" mode="ios">
+        <ion-button expand="block" fill="solid" mode="ios" (click)="goWebSite()">
           Go To Their Website
         </ion-button>
       </ion-col>

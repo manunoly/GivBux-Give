@@ -75,9 +75,11 @@ export class ApiService {
     return this._http.post(url, params, { headers: headers }).toPromise();
   }
 
-  getAllGive(): Promise<Object> {
+  getAllGive(idCategory? : string): Promise<Object> {
 
-    const url = this.apiUrl + "give";
+    const giveCategory = idCategory ? idCategory : 'null'
+
+    const url = this.apiUrl + "give/" + giveCategory;
     const headers = this.getHeaders();
 
     return this._http.get(url, { headers: headers }).toPromise();
@@ -158,5 +160,15 @@ export class ApiService {
     return this._http.post(url, params, { headers: headers }).toPromise();
 
   }
+
+  getGiveCategories(): Promise<Object> {
+
+    const url = this.apiUrl + "givecategories";
+    const headers = this.getHeaders();
+
+    return this._http.get(url, { headers: headers }).toPromise();
+  }
+
+  
 
 }

@@ -33,8 +33,8 @@ export class SuccessDirectlyPage implements OnInit {
     }
 
     this.title = this.charity.name;
-    this.charity.image = this.charity.image
-      ? this.charity.image
+    this.charity.image_background = this.charity.image_background
+      ? this.charity.image_background
       : '/assets/img/givbux-new-logo.svg';
 
     this.amountDonated =

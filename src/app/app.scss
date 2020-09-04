@@ -4,6 +4,7 @@
 
 .header-givbux {
   --background: var(--ion-color-primary) !important;
+  z-index: 999;
 
   ion-toolbar {
     --background: var(--ion-color-primary) !important;

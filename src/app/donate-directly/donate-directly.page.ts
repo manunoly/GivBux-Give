@@ -4,6 +4,7 @@ import { UtilsService } from '../_services/utils.service';
 import { Charity } from '../_models/charity.model';
 import { Router, NavigationExtras } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { Category } from '../_models/categories.model';
 
 @Component({
   selector: 'app-donate-directly',
@@ -27,24 +28,7 @@ export class DonateDirectlyPage implements OnInit {
     cssClass: 'categories-custom-popover'
   }
 
-  categories = [
-    {
-      name: 'All Categories',
-      id: 0
-    },
-    {
-      name: 'category 1',
-      id: 1
-    },
-    {
-      name: 'category 2',
-      id: 2
-    },
-    {
-      name: 'category 3',
-      id: 3
-    }
-  ]
+  categories : Category[];
 
   constructor(
     private _api: ApiService,
@@ -71,6 +55,23 @@ export class DonateDirectlyPage implements OnInit {
       this.charitiesBackup = [...(this.charities as Charity[])];
       
       console.log(this.charities);
+    } catch (error) {
+      this.loading = false;
+      this._utils.showAlertMessage(
+        'Info',
+        error['error'].message ? error['error'].message : 'error'
+      );
+      console.log(error);
+    }
+
+    try {
+      this.loading = true;
+      const response = await this._api.getGiveCategories();
+      this.loading = false;
+      //console.log(response);
+      this.categories = response as Category[];
+      console.log(this.categories);
+
     } catch (error) {
       this.loading = false;
       this._utils.showAlertMessage(
@@ -158,7 +159,7 @@ export class DonateDirectlyPage implements OnInit {
   }
 
   filterLocal(event) {
-    console.log(event);
+    // console.log(event);
     if (event.target.value != '') {
       this.flagQuerySearch = true;
       this.filterByName(event.target.value);
@@ -184,6 +185,44 @@ export class DonateDirectlyPage implements OnInit {
     } else {
       this.charities = [];
       return null;
+    }
+  }
+
+  async selectedCategory(event : CustomEvent){
+
+    // console.log(event);
+    // console.log(event.detail.value);
+    const categoryForSearch = event.detail.value;
+
+    console.log(categoryForSearch);
+
+    try {
+
+      this.loading = true;
+      const response = await this._api.getAllGive(categoryForSearch);
+      this.loading = false;
+      //console.log(response);
+      this.charities = response as Charity[];
+      console.log(this.charities);
+
+      if(categoryForSearch){
+        this.flagQuerySearch = true;
+      } else {
+        this.flagQuerySearch = false;
+      }
+
+      this.charities = this.charities.filter((charityIterable) => {
+        charityIterable.selected = false;
+        return charityIterable.status;
+      });
+
+    } catch (error) {
+      this.loading = false;
+      this._utils.showAlertMessage(
+        'Info',
+        error['error'].message ? error['error'].message : 'error'
+      );
+      console.log(error);
     }
   }
 }

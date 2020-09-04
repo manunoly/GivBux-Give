@@ -122,9 +122,9 @@
         <ion-col size="12">
           <ion-text color="light" class="fs-text-09">
             <p class="ion-no-margin">
-              Select one charity from the list below that you wish to
-              contribute a percenttage of your purchase rewards to, or
-              search by name or by category.
+              Select one charity from the list below that you wish to contribute
+              a percenttage of your purchase rewards to, or search by name or by
+              category.
             </p>
           </ion-text>
         </ion-col>
@@ -155,10 +155,15 @@
           ></ion-searchbar>
         </ion-col>
         <ion-col size="6" class="ion-no-padding">
-          <ion-item lines="none" color="dark" mode="ios" class="item-select-categories">
-            <ion-label hidden position="stacked"
-            ><span>Categories</span></ion-label
+          <ion-item
+            lines="none"
+            color="dark"
+            mode="ios"
+            class="item-select-categories"
           >
+            <ion-label hidden position="stacked"
+              ><span>Categories</span></ion-label
+            >
             <ion-select
               class="select-categories"
               [interfaceOptions]="popoverCategories"
@@ -166,7 +171,11 @@
               placeholder="Categories"
               color="light"
               mode="ios"
+              (ionChange)="selectedCategory($event)"
             >
+              <ion-select-option [value]="null"
+                >All Categories</ion-select-option
+              >
               <ion-select-option
                 *ngFor="let category of categories"
                 [value]="category.id"
@@ -253,14 +262,13 @@
                         size="4"
                         class="ion-no-padding ion-no-margin ion-text-center"
                       >
-                        <!-- <ion-text color="primary">
-                            <h5 color="primary" class="ion-no-margin">
-                              <small
-                                class="ion-text-end small-category"
-                                >Category: 
-                              </small>
-                            </h5>
-                          </ion-text> -->
+                        <ion-text color="primary">
+                          <p color="primary" class="ion-no-margin">
+                            <small class="ion-text-end small-category"
+                              >Cat: {{charity?.category?.name}}
+                            </small>
+                          </p>
+                        </ion-text>
                       </ion-col>
                     </ion-row>
                   </ion-grid>
@@ -298,6 +306,22 @@
 
             <!-- NgFor Item Charity -->
           </ng-container>
+        </div>
+
+        <!-- NONE RESULTS FILTERS -->
+        <div
+          *ngIf="(charities && charities.length == 0)"
+          class="div-border-top"
+        >
+          <ion-row
+            class="ion-no-padding ion-no-margin ion-text-center row-givbux-history-padding"
+          >
+            <ion-text color="medium-givbux" class="ion-text-center">
+              <p class="ion-text-center">
+                No Organization Has Been Found For This Filter, Please Try Again
+              </p>
+            </ion-text>
+          </ion-row>
         </div>
       </ng-container>
 

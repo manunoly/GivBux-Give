@@ -79,8 +79,11 @@
               interface="popover"
               placeholder="Categories"
               color="light"
-              mode="ios"
+              (ionChange)="selectedCategory($event)"
             >
+              <ion-select-option [value]="null"
+                >All Categories</ion-select-option
+              >
               <ion-select-option
                 *ngFor="let category of categories"
                 [value]="category.id"
@@ -161,13 +164,13 @@
                         size="4"
                         class="ion-no-padding ion-no-margin ion-text-center ion-align-self-center"
                       >
-                        <div *ngIf="charity?.selected">
-                          <ion-icon
-                            name="checkmark-circle-outline"
-                            size="large"
-                            color="primary"
-                          ></ion-icon>
-                        </div>
+                        <ion-text color="primary">
+                          <p color="primary" class="ion-no-margin">
+                            <small class="ion-text-end small-category"
+                              >Cat: {{charity?.category?.name}}
+                            </small>
+                          </p>
+                        </ion-text>
                       </ion-col>
                     </ion-row>
                   </ion-grid>
@@ -188,6 +191,19 @@
                         Select this Charity
                       </ion-button>
                     </ion-col>
+
+                    <ion-col
+                      size="6"
+                      class="ion-no-margin ion-text-center ion-align-self-center"
+                    >
+                      <div *ngIf="charity?.selected">
+                        <ion-icon
+                          name="checkmark-circle-outline"
+                          size="large"
+                          color="primary"
+                        ></ion-icon>
+                      </div>
+                    </ion-col>
                   </ion-row>
                 </ion-col>
               </ion-row>
@@ -196,6 +212,23 @@
             <!-- NgFor Item Charity -->
           </ng-container>
         </div>
+
+        <!-- NONE RESULTS FILTERS -->
+        <div
+          *ngIf="(charities && charities.length == 0)"
+          class="div-border-top"
+        >
+          <ion-row
+            class="ion-no-padding ion-no-margin ion-text-center row-givbux-history-padding"
+          >
+            <ion-text color="medium-givbux" class="ion-text-center">
+              <p class="ion-text-center">
+                No Organization Has Been Found For This Filter, Please Try Again
+              </p>
+            </ion-text>
+          </ion-row>
+        </div>
+
       </ng-container>
 
       <!-- LOADING SPINNER -->

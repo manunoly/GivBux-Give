@@ -12,7 +12,7 @@ export class SuccessPage implements OnInit {
   title = 'Give';
   amount = 10;
   donatedTo = '';
-  imageSucces = './assets/img/hands.png';
+  imageSuccess = './assets/img/success/hands.svg';
 
   constructor(private router: Router,
     private route: ActivatedRoute,

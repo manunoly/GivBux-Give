@@ -107,6 +107,14 @@
   --ion-color-light-givbux-shade: #d7d8da;
   --ion-color-light-givbux-tint: #f5f6f9;
 
+  /** Light Primary Givbux **/
+  --ion-color-light-primary: #f3f3f4;
+  --ion-color-light-primary-rgb: 244, 244, 244;
+  --ion-color-light-primary-contrast: #6633c8;
+  --ion-color-light-primary-contrast-rgb: 0, 0, 0;
+  --ion-color-primary-shade: #4d2899; 
+  --ion-color-primary-tint: #9860ff;
+
   /** medium Givbux **/
   --ion-color-medium-givbux: #989aa2;
   --ion-color-medium-givbux-rgb: 152, 154, 162;
@@ -140,6 +148,15 @@
   --ion-color-contrast-rgb: var(--ion-color-light-strong-contrast-rgb);
   --ion-color-shade: var(--ion-color-light-strong-shade);
   --ion-color-tint: var(--ion-color-light-strong-tint);
+}
+
+.ion-color-light-primary{
+  --ion-color-base: var(--ion-color-light-primary);
+  --ion-color-base-rgb: var(--ion-color-light-primary-rgb);
+  --ion-color-contrast: var(--ion-color-light-primary-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-light-primary-contrast-rgb);
+  --ion-color-shade: var(--ion-color-light-primary-shade);
+  --ion-color-tint: var(--ion-color-light-primary-tint);
 }
 
 .ion-color-medium-givbux {

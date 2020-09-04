@@ -40,3 +40,10 @@ p {
   border-bottom: 0.5px solid var(--ion-color-medium);
   color: var(--ion-color-primary);
 }
+
+.avatar-history {
+  margin: auto;
+  img {
+    object-fit: fill;
+  }
+}

@@ -163,6 +163,14 @@
   }
 }
 
+.search-give { 
+  padding: 0;
+  .searchbar-input-container.sc-ion-searchbar-ios{
+    border: 1px solid var(--ion-color-primary);
+    border-radius: 10px;
+  }
+}
+
 .segment-new-givbux {
   border-bottom: 3px solid var(--ion-color-primary);
   --background: var(--ion-color-medium-light);
@@ -239,6 +247,16 @@
   }
 }
 
+.categories-custom-popover{
+  .popover-content{
+    min-width: 95%;
+    border: 1px solid var(--ion-color-primary);
+  }
+  ion-item{
+    text-align: center;
+  }
+}
+
 /// VIDEO CALLS
 .remote-video {
   position: fixed;
@@ -311,4 +329,7 @@
 }
 .fw-900 {
   font-weight: 900;
+}
+.lh-90{
+  line-height: 90%;
 }

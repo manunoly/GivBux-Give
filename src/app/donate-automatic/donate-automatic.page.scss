@@ -58,3 +58,39 @@
   border-bottom: 0.5px solid var(--ion-color-medium);
   color: var(--ion-color-primary);
 }
+
+.row-more-charities {
+  border-bottom: 0.5px solid var(--ion-color-medium);
+}
+.btn-number-percentage {
+  width: 12%;
+  height: 2.5rem;
+}
+
+.btn-other-percentage {
+  width: 30%;
+  height: 2.5rem;
+}
+
+.container-percentage {
+  position: absolute;
+  z-index: 9;
+  top: 6px;
+
+  .border-percentage {
+    border-radius: 10px;
+  }
+}
+
+.item-selec-categories {
+  --padding-start: 0.5rem;
+}
+
+.select-categories {
+  border: 1px solid var(--ion-color-primary);
+  border-radius: 10px;
+  padding: 0.5rem;
+  background: var(--ion-color-light);
+  color: var(--ion-color-primary);
+  margin-top: 0.7rem;
+}

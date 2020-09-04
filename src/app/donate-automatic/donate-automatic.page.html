@@ -48,70 +48,155 @@
       </h5>
     </ion-text>
 
+    <!-- GRID NEW PERCENTAGE -->
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ion-no-padding">
+        <ion-col size="12" class="ion-no-padding ion-text-center">
+          <ion-text color="light">
+            <h4 class="ion-padding-top ion-no-margin">Percentage to donate</h4>
+          </ion-text>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-button
+            [color]="selectedPercentage[0] ? 'primary' : 'light-primary'"
+            fill="solid"
+            mode="ios"
+            class="btn-number-percentage"
+            (click)="this.percentageToDonate = 1;updatePercentage(0)"
+          >
+            1%
+          </ion-button>
+          <ion-button
+            [color]="selectedPercentage[1] ? 'primary' : 'light-primary'"
+            fill="solid"
+            mode="ios"
+            class="btn-number-percentage"
+            (click)="this.percentageToDonate = 5;updatePercentage(1)"
+          >
+            5%
+          </ion-button>
+          <ion-button
+            [color]="selectedPercentage[2] ? 'primary' : 'light-primary'"
+            fill="solid"
+            mode="ios"
+            class="btn-number-percentage"
+            (click)="this.percentageToDonate = 10;updatePercentage(2)"
+          >
+            10%
+          </ion-button>
+          <ion-button
+            [color]="selectedPercentage[3] ? 'primary' : 'light-primary'"
+            fill="solid"
+            mode="ios"
+            class="btn-number-percentage"
+            (click)="this.percentageToDonate = 25;updatePercentage(3)"
+          >
+            25%
+          </ion-button>
+          <ion-button
+            [color]="selectedPercentage[4] ? 'primary' : 'light-primary'"
+            fill="solid"
+            mode="ios"
+            class="btn-other-percentage"
+          >
+            <ion-input
+              type="number"
+              min="1"
+              max="100"
+              step="1"
+              inputmode="numeric"
+              class="ion-text-center"
+              placeholder="Other"
+              maxlength="3"
+              [(ngModel)]="this.percentageToDonate"
+              (click)="this.percentageToDonate = null ;updatePercentage(4)"
+            ></ion-input>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
     <ion-grid>
       <ion-row class="ion-padding-bottom">
+        <ion-col size="12">
+          <ion-text color="light" class="fs-text-09">
+            <p class="ion-no-margin">
+              Select one charity from the list below that you wish to
+              contribute a percenttage of your purchase rewards to, or
+              search by name or by category.
+            </p>
+          </ion-text>
+        </ion-col>
+
         <ion-col
           class="ion-text-start"
           size="12"
           *ngFor="let charitySelected of charitiesSelected; trackBy:trackByFn"
         >
           <ion-text color="light">
-            <p class="mx-0">{{charitySelected.name | titlecase}}</p>
+            <p class="mx-0">- {{charitySelected.name | titlecase}}</p>
           </ion-text>
+        </ion-col>
+      </ion-row>
+
+      <!-- ROW FOR FILTERS SEARCH AND BY CATEGORY -->
+      <ion-row class="ion-no-padding">
+        <ion-col size="6" class="ion-no-padding">
+          <ion-searchbar
+            class="search-give"
+            placeholder="Search"
+            inputmode="search"
+            type="text"
+            (ionChange)="filterLocal($event)"
+            [debounce]="500"
+            mode="ios"
+            color="light-primary"
+          ></ion-searchbar>
+        </ion-col>
+        <ion-col size="6" class="ion-no-padding">
+          <ion-item lines="none" color="dark" mode="ios" class="item-select-categories">
+            <ion-label hidden position="stacked"
+            ><span>Categories</span></ion-label
+          >
+            <ion-select
+              class="select-categories"
+              [interfaceOptions]="popoverCategories"
+              interface="popover"
+              placeholder="Categories"
+              color="light"
+              mode="ios"
+            >
+              <ion-select-option
+                *ngFor="let category of categories"
+                [value]="category.id"
+                >{{category.name}}</ion-select-option
+              >
+            </ion-select>
+          </ion-item>
         </ion-col>
       </ion-row>
     </ion-grid>
   </div>
 
-  <!-- MAIN BODY ROUND GRID -->
+  <!-- MAIN BODY -->
   <ion-grid class="content-light">
     <ion-row>
-      <ion-col size="12">
-        <ion-item color="light-givbux">
-          <ion-label position="floating">Percentage to donate</ion-label>
-          <ion-input
-            type="number"
-            min="1"
-            max="100"
-            step="1"
-            inputmode="numeric"
-            class="ion-text-center"
-            [(ngModel)]="percentageToDonate"
-          ></ion-input>
-          <ion-text color="dark" slot="end" class="ion-align-self-end"
-            >%</ion-text
-          >
-        </ion-item>
-      </ion-col>
-
-      <ion-col size="12">
-        <ion-text color="primary" class="fs-text-09">
-          <p>
-            Select one or two charities from the list below that you wish to
-            donate your rewards to.
-          </p>
-        </ion-text>
-      </ion-col>
-
-      <ion-col size="12">
-        <ion-item
-          lines="none"
-          class="item-icon-help-bottom"
-          color="light-givbux"
-        >
-          <ion-icon
-            name="help-circle-outline"
-            color="primary"
-            slot="end"
-            size="large"
-            (click)="callAlertInfo()"
-          >
-          </ion-icon>
-        </ion-item>
-      </ion-col>
-
       <!-- NgFor Item Charity -->
       <ng-container *ngIf="!loading">
+        <ion-text color="medium" *ngIf="!flagQuerySearch" class="full-width">
+          <h2 class="ion-no-margin ion-text-start">
+            <b>Top 10 Charities</b>
+            <ion-icon
+              name="help-circle-outline"
+              color="primary"
+              size="large"
+              style="float: right"
+              (click)="callAlertInfo()"
+            ></ion-icon>
+          </h2>
+        </ion-text>
+
         <div
           class="full-width"
           [ngClass]="{'div-border-top': (charities.length > 0)}"
@@ -119,13 +204,27 @@
           <ng-container
             *ngFor="let charity of charities ; let i=index ; trackBy:trackByFn"
           >
-            <ion-col *ngIf="charity.status" size="12" class="ion-no-padding">
-              <ion-row
-                class="ion-no-padding ion-no-margin row-givbux-history ion-activatable"
-                (click)="selectCharityToDonate(i , charity)"
-              >
+            <!-- SPACE FOR TOP TEXT MORE CHARITIES -->
+            <ion-col size="12" *ngIf="(i == 10 && !flagQuerySearch)">
+              <ion-text color="medium">
+                <h4 class="ion-no-margin ion-text-start row-more-charities">
+                  <b>More Charities</b>
+                </h4>
+              </ion-text>
+            </ion-col>
+
+            <ion-col size="12" class="ion-no-padding">
+              <div *ngIf="charity?.selected" class="container-percentage">
+                <span class="border-percentage"
+                  ><b
+                    >{{calculatePercentageToShow() | number:'1.0-2'}}%</b
+                  ></span
+                >
+              </div>
+
+              <ion-row class="ion-no-padding ion-no-margin row-givbux-history">
                 <!-- AVATAR TYPE IMG LEFT -->
-                <ion-col size="3">
+                <ion-col size="3" class="ion-align-self-center">
                   <ion-avatar class="avatar-img">
                     <img [src]="charity?.image ? charity?.image : image" />
                   </ion-avatar>
@@ -149,7 +248,7 @@
                         </ion-text>
                       </ion-col>
 
-                      <!-- COL FOR CATEGORY OR PERCENTAGE -->
+                      <!-- COL FOR CATEGORY -->
                       <ion-col
                         size="4"
                         class="ion-no-padding ion-no-margin ion-text-center"
@@ -162,44 +261,38 @@
                               </small>
                             </h5>
                           </ion-text> -->
-
-                        <div *ngIf="charity?.selected">
-                          <span class="border-percentage"
-                            ><b
-                              >{{calculatePercentageToShow() |
-                              number:'1.0-2'}}%</b
-                            ></span
-                          >
-                        </div>
                       </ion-col>
-
-                      <!-- COL FOR BUTTONS BOTTOM -->
-                      <!-- <ion-col
-                        size="6"
-                        class="ion-no-padding ion-no-margin ion-text-center"
-                      >
-                        <ion-button expand="block" fill="solid" mode="ios" size="small">
-                          Select this Charity
-                        </ion-button>
-                      </ion-col>
-
-                      <ion-col
-                        size="6"
-                        class="ion-no-padding ion-no-margin ion-text-center"
-                      >
-                        <ion-button
-                          expand="block"
-                          fill="solid"
-                          mode="ios"
-                          size="small"
-                        >
-                          Learn More
-                        </ion-button>
-                      </ion-col> -->
                     </ion-row>
                   </ion-grid>
+
+                  <!-- ROW FOR BUTTONS BOTTOM -->
+                  <ion-row class="ion-padding-top">
+                    <ion-col size="6" class="ion-no-margin ion-text-center">
+                      <ion-button
+                        expand="block"
+                        fill="solid"
+                        mode="ios"
+                        size="small"
+                        (click)="selectCharityToDonate(i , charity)"
+                      >
+                        Select this Charity
+                      </ion-button>
+                    </ion-col>
+
+                    <ion-col size="6" class="ion-no-margin ion-text-center">
+                      <ion-button
+                        expand="block"
+                        fill="solid"
+                        mode="ios"
+                        size="small"
+                        (click)="viewMoreFromCharity(charity)"
+                      >
+                        Learn More
+                      </ion-button>
+                    </ion-col>
+                  </ion-row>
                 </ion-col>
-                <ion-ripple-effect></ion-ripple-effect>
+                <!-- <ion-ripple-effect></ion-ripple-effect> -->
               </ion-row>
             </ion-col>
 

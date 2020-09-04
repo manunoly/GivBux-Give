@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SuccessPageRoutingModule } from './success-routing.module';
+import { SuccessDirectlyPageRoutingModule } from './success-directly-routing.module';
 
-import { SuccessPage } from './success.page';
+import { SuccessDirectlyPage } from './success-directly.page';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    SuccessPageRoutingModule,
+    SuccessDirectlyPageRoutingModule,
     SharedModule
   ],
-  declarations: [SuccessPage]
+  declarations: [SuccessDirectlyPage]
 })
-export class SuccessPageModule {}
+export class SuccessDirectlyPageModule {}

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../_services/api.service';
 import { UtilsService } from '../_services/utils.service';
 import { Charity } from '../_models/charity.model';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-donate-directly',
@@ -10,40 +11,74 @@ import { Router } from '@angular/router';
   styleUrls: ['./donate-directly.page.scss', '../home/home.page.scss'],
 })
 export class DonateDirectlyPage implements OnInit {
-
   title = 'Directly Give';
   userSesion;
   loading: boolean = false;
   image = '/assets/img/givbux-new-logo.svg';
 
   charities: Charity[] = [];
+  charitiesBackup: Charity[] = [];
   charitySelected: Charity;
   amountToDonate: number;
 
-  constructor(private _api: ApiService,
+  flagQuerySearch = false;
+
+  popoverCategories = {
+    cssClass: 'categories-custom-popover'
+  }
+
+  categories = [
+    {
+      name: 'All Categories',
+      id: 0
+    },
+    {
+      name: 'category 1',
+      id: 1
+    },
+    {
+      name: 'category 2',
+      id: 2
+    },
+    {
+      name: 'category 3',
+      id: 3
+    }
+  ]
+
+  constructor(
+    private _api: ApiService,
     private _utils: UtilsService,
-    private router: Router) {
+    private router: Router,
+    private navController: NavController
+  ) {
     this.userSesion = this._api.userSesion;
   }
 
   async ngOnInit() {
-
     try {
-
       this.loading = true;
       const response = await this._api.getAllGive();
       this.loading = false;
       console.log(response);
       this.charities = response as Charity[];
-      console.log(this.charities);
 
+      this.charities = this.charities.filter((charityIterable) => {
+        charityIterable.selected = false;
+        return charityIterable.status;
+      });
+
+      this.charitiesBackup = [...(this.charities as Charity[])];
+      
+      console.log(this.charities);
     } catch (error) {
       this.loading = false;
-      this._utils.showAlertMessage('Info', error['error'].message ? error['error'].message : 'error');
+      this._utils.showAlertMessage(
+        'Info',
+        error['error'].message ? error['error'].message : 'error'
+      );
       console.log(error);
-
     }
-    
   }
 
   ionViewWillEnter() {
@@ -51,55 +86,104 @@ export class DonateDirectlyPage implements OnInit {
   }
 
   async giveDonateToCharity() {
-
     // WAIT FOR Response FROM ALERT
-    const responseAlert = await this._utils.showAlertConfirmGivinDirectly(this.charitySelected.name, this.amountToDonate);
+    const responseAlert = await this._utils.showAlertConfirmGivinDirectly(
+      this.charitySelected.name,
+      this.amountToDonate
+    );
     console.log(responseAlert);
 
     if (responseAlert) {
       try {
-
         this._utils.showLoading();
-        const response = await this._api.giveToCharity(this.charitySelected.id, this.amountToDonate);
+        const response = await this._api.giveToCharity(
+          this.charitySelected.id,
+          this.amountToDonate
+        );
         this._utils.dismissLoading();
-        this.router.navigate(['/user/success', 'directly', { charity1: this.charitySelected.name, amount: this.amountToDonate }])
 
+        const navigationExtras: NavigationExtras = {
+          state: {
+            charity: this.charitySelected,
+            amountDonated: this.amountToDonate
+          },
+        };
+        this.navController.navigateForward(
+          'user/success-directly',
+          navigationExtras
+        );
+        // this.router.navigate(['/user/success', 'directly', { charity1: this.charitySelected.name, amount: this.amountToDonate }]);
       } catch (error) {
         this._utils.dismissLoading();
-        this._utils.showAlertMessage('Info', error['error'].message ? error['error'].message : 'error');
+        this._utils.showAlertMessage(
+          'Info',
+          error['error'].message ? error['error'].message : 'error'
+        );
         console.log(error);
       }
     }
-
   }
 
   selectCharityToDonate(index: number, charity: Charity) {
-
     console.log('Selected charity ');
     console.log(charity);
-    this.charities.forEach(charityIterable => {
+    this.charities.forEach((charityIterable) => {
       charityIterable.selected = false;
       charity.selected = true;
     });
 
     this.charitySelected = charity;
-
   }
 
   refreshData() {
-    this.charities.forEach(charityIterable => {
+    this.charities = this.charities.filter((charityIterable) => {
       charityIterable.selected = false;
+      return charityIterable.status;
     });
+
+    // this.charities.forEach(charityIterable => {
+    //   charityIterable.selected = false;
+    // });
+
     this.charitySelected = null;
-    this.amountToDonate = 0;
+    this.amountToDonate = null;
   }
 
   callAlertInfo() {
-    this._utils.showAlertMessageHome('Help' , 2)
+    this._utils.showAlertMessageHome('Help', 2);
   }
 
   trackByFn(index: number, charity: any): any {
     return charity.id;
   }
 
+  filterLocal(event) {
+    console.log(event);
+    if (event.target.value != '') {
+      this.flagQuerySearch = true;
+      this.filterByName(event.target.value);
+    } else {
+      this.charities = this.charitiesBackup;
+      this.flagQuerySearch = false;
+    }
+  }
+
+  private filterByName(search: string): Charity[] {
+    console.log(search);
+    if (search != '') {
+      const resultFilter = this.charitiesBackup.filter((charity) =>
+        charity.name.toLowerCase().includes(search)
+      );
+      console.log(resultFilter);
+      if (resultFilter.length == 0) {
+        this.charities = [];
+        return;
+      }
+      this.charities = resultFilter;
+      return;
+    } else {
+      this.charities = [];
+      return null;
+    }
+  }
 }

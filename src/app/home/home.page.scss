@@ -37,6 +37,8 @@ h3 {
 .border-percentage{
   border: 2px solid var(--ion-color-primary);
   padding: 0.1rem 0.5rem;
+  background: var(--ion-color-primary);
+  color: var(--ion-color-light);
 }
 
 .container-fab-other{

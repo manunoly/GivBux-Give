@@ -1,0 +1,57 @@
+.container-banner {
+  position: relative;
+  background: var(--ion-color-light);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: calc(56px + 0.5vmin);
+  height: 60vmin;
+  // display: flex;
+  // align-items: flex-end;
+  @media screen and (min-device-width: 768px), screen and (min-width: 768px) {
+    // margin-top: calc(-44px + 12vmax);
+    height: 50vmin;
+  }
+  @media screen and (min-device-width: 1024px), screen and (min-width: 1024px) {
+    margin-top: calc(-56px + 12vmax);
+    height: 55vmin;
+  }
+}
+
+.ios {
+  .container-banner {
+    position: relative;
+    background: var(--ion-color-light);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: calc(44px + 0.5vmin);
+    height: 60vmin;
+    // display: flex;
+    // align-items: flex-end;
+    @media screen and (min-device-width: 768px), screen and (min-width: 768px) {
+      // margin-top: calc(-44px + 12vmax);
+      height: 40vmin;
+    }
+    @media screen and (min-device-width: 1024px),
+      screen and (min-width: 1024px) {
+      margin-top: calc(-44px + 7vmax);
+      height: 40vmin;
+    }
+  }
+}
+
+.container-bottom-info {
+  position: absolute;
+  z-index: 9;
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  bottom: 0;
+
+  ion-avatar {
+    margin: auto;
+    img {
+      object-fit: fill;
+    }
+  }
+}

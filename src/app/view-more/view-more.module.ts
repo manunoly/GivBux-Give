@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SuccessPageRoutingModule } from './success-routing.module';
+import { ViewMorePageRoutingModule } from './view-more-routing.module';
 
-import { SuccessPage } from './success.page';
+import { ViewMorePage } from './view-more.page';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    SuccessPageRoutingModule,
+    ViewMorePageRoutingModule,
     SharedModule
   ],
-  declarations: [SuccessPage]
+  declarations: [ViewMorePage]
 })
-export class SuccessPageModule {}
+export class ViewMorePageModule {}

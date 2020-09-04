@@ -1,0 +1,63 @@
+<app-new-header-givbux
+  [inicio]="true"
+  [fin]="false"
+  [title]="title | titlecase"
+></app-new-header-givbux>
+
+<ion-content class="content-light">
+  <div
+    *ngIf="charity"
+    class="container-banner"
+    [ngStyle]="{backgroundImage: 'url(' + charity?.image + ')'}"
+  >
+    <div class="container-bottom-info">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="4" class="ion-no-padding ion-align-self-center">
+            <ion-avatar>
+              <img
+                [src]="charity?.image ? charity?.image : '/assets/img/givbux-new-logo.svg'"
+              />
+            </ion-avatar>
+          </ion-col>
+          <ion-col size="8" class="ion-no-padding ion-align-self-center">
+            <ion-text color="light">
+              <p class="ion-no-margin"><small>You gave ${{amountDonated}} to</small></p>
+            </ion-text>
+
+            <ion-text color="light">
+              <h3 class="ion-no-margin"><b>{{charity?.name}}</b></h3>
+            </ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <ion-text color="dark">
+          <h3>
+            The money was given <br />
+            successfully!
+          </h3>
+        </ion-text>
+      </ion-col>
+
+      <ion-col size="12" class="ion-text-center">
+        <ion-text color="primary">
+          <h1 class="ion-no-margin"><b>THANK YOU!</b></h1>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="ion-padding">
+        <ion-button (click)="goHome()" expand="block" fill="solid" mode="ios">
+          Accept
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

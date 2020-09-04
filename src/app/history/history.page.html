@@ -1,40 +1,68 @@
-<!-- MAIN TEXT HEADER WITH ICON RIGHT -->
-<app-header-givbux [inicio]=true [fin]=false [regresarApp]=false></app-header-givbux>
+<app-new-header-givbux
+  [inicio]="true"
+  [fin]="false"
+  [title]="title | titlecase"
+></app-new-header-givbux>
 
-<ion-content fullscreen class="ion-text-center ion-padding colorBack">
-
-  <ion-text color="light">
+<ion-content fullscreen class="ion-text-center ion-padding content-light">
+  <!-- <ion-text color="light">
     <h5 class="ion-padding-vertical">{{title | uppercase}}</h5>
-  </ion-text>
+  </ion-text> -->
 
   <!-- MAIN BODY ROUND GRID -->
-  <ion-grid class="roundGrid">
-    <ion-row>
+  <ion-grid class="padding-top-header-content">
+    <ion-row class="ion-no-padding">
+      <ion-col size="12" class="ion-no-padding">
+        <ion-list class="container-light">
+          <ng-container *ngFor="let item of historical; trackBy:trackByFn">
+            <ion-row class="ion-no-padding" *ngIf="item?.donationreceive">
+              <ion-col size="3" class="ion-no-padding ion-align-self-center">
+                <ion-avatar class="avatar-history">
+                  <img
+                    [src]="(item?.donationreceive?.image) ? item?.donationreceive?.image : '/assets/img/givbux-new-logo.svg' "
+                  />
+                </ion-avatar>
+              </ion-col>
+              <ion-col size="9" class="ion-no-padding ion-align-self-center">
+                <ion-item
+                  lines="full"
+                  *ngIf="item?.donationreceive"
+                  color="light-givbux"
+                >
+                  <ion-label color="primary">
+                    <h2><b>{{item.donationreceive.name}}</b></h2>
 
-      <ion-col size="12">
-        <ion-list>
-          <ion-item *ngFor="let item of historical; trackBy:trackByFn">
-
-            <ion-label color="primary">
-
-              <h2><b>{{item.donationreceive.name}}</b></h2>
-
-              <p><span class="color-gray">Amount: </span> <span class="color-dark">{{item.amount | currency:'USD' }} you
-                  total Give </span></p>
-              <p><span class="color-gray">Date: </span> <span class="color-dark">{{item.date | date:'medium' }}</span>
-              </p>
-
-
-            </ion-label>
-
-
-
-          </ion-item>
+                    <p>
+                      <span class="color-gray">Amount: </span>
+                      <span class="color-dark"
+                        >{{item.amount | currency:'USD' }} you total Give
+                      </span>
+                    </p>
+                    <p>
+                      <span class="color-gray">Date: </span>
+                      <span class="color-dark"
+                        >{{item.date | date:'medium' }}</span
+                      >
+                    </p>
+                  </ion-label>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ng-container>
         </ion-list>
       </ion-col>
-
-
     </ion-row>
+    <!-- NONE RECORDS FOR HISTORY -->
+    <div *ngIf="(historical && historical.length == 0)" class="div-border-top">
+      <ion-row
+        class="ion-no-padding ion-no-margin ion-text-center row-givbux-history-padding"
+      >
+        <ion-text color="medium-givbux" class="ion-text-center">
+          <p class="ion-text-center">
+            You Still Don’t Have Any Transaction Logs For This History
+          </p>
+        </ion-text>
+      </ion-row>
+    </div>
   </ion-grid>
-
 </ion-content>

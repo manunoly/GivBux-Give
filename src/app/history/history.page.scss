@@ -1,8 +1,49 @@
 p {
-    .color-gray{
-        color: gray !important;
-    }
-    .color-dark {
-        color: #000;
-    }
+  .color-gray {
+    color: gray !important;
+  }
+  .color-dark {
+    color: #000;
+  }
+}
+
+.row-full {
+  width: 100%;
+}
+.btn-cancel-transaction {
+  white-space: normal;
+  float: right;
+}
+
+.small-price {
+  font-size: 65%;
+}
+
+.div-border-top {
+  border-top: 0.5px solid var(--ion-color-medium);
+}
+
+.row-givbux-history {
+  // border-top: 0.5px solid var(--ion-color-medium);
+  border-bottom: 0.5px solid var(--ion-color-medium);
+  color: var(--ion-color-primary);
+  padding: 0.5rem 0;
+}
+.row-givbux-history-padding {
+  // border-top: 0.5px solid var(--ion-color-medium);
+  border-bottom: 0.5px solid var(--ion-color-medium);
+  color: var(--ion-color-primary);
+  padding: 0.5rem;
+}
+.row-givbux-history-no-padding {
+  // border-top: 0.5px solid var(--ion-color-medium);
+  border-bottom: 0.5px solid var(--ion-color-medium);
+  color: var(--ion-color-primary);
+}
+
+.avatar-history {
+  margin: auto;
+  img {
+    object-fit: fill;
+  }
 }

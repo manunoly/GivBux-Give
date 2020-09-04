@@ -1,19 +1,23 @@
-<!-- MAIN TEXT HEADER WITH ICON RIGHT -->
-<app-header-givbux [inicio]=false [fin]=false [regresarApp]=false></app-header-givbux>
+<app-new-header-givbux
+  [inicio]="false"
+  [fin]="false"
+  [title]="title"
+></app-new-header-givbux>
 
-<ion-content fullscreen class="ion-text-center ion-padding colorBack">
-
-  <ion-text color="light">
-    <h5 class="ion-padding-vertical">{{title | uppercase}}</h5>
-  </ion-text>
+<ion-content fullscreen class="ion-text-center ion-padding content-light">
+  <ion-grid class="padding-top-header-content">
+    <ion-row class="logo-congratulations">
+      <ion-col>
+        <img [src]="'assets/img/success/logo-congratulations.svg'" />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <!-- MAIN BODY ROUND GRID -->
-  <ion-grid class="roundGrid grid-margin-top">
+  <ion-grid class="content-light">
     <ion-row class="align-items-center padding-row">
-
       <ion-col size="12">
         <ion-text color="primary" class="fs-text-09">
-
           <p *ngIf="donatedTo != '' ">
             You have donated {{ amount | currency: 'USD'}} to
           </p>
@@ -21,34 +25,31 @@
           <p *ngIf="donatedTo == '' ">
             You have donated {{ amount | currency: 'USD'}}
           </p>
-          
-          <h2><b>{{donatedTo | uppercase}}</b></h2>
 
+          <h2><b>{{donatedTo | uppercase}}</b></h2>
         </ion-text>
       </ion-col>
 
       <!-- HANDS IMAGE -->
       <ion-col size="12" class="ion-margin-vertical">
         <div class="container-img-success">
-          <img [src]="imageSucces" />
+          <img [src]="imageSuccess" />
         </div>
       </ion-col>
 
       <ion-col size="12" class="ion-margin-top">
-        <ion-text color="dark" class="fs-text-09">
-          <p>
-            You have donated successfully!
-          </p>
+        <ion-text color="medium" class="fs-text-09">
+          <p>You have donated successfully!</p>
         </ion-text>
       </ion-col>
 
       <!-- ACCEPT BUTTON -->
 
       <ion-col size="12">
-        <ion-button color="primary" shape="round" expand="block" (click)="goHome()">ACCEPT</ion-button>
+        <ion-button color="primary" mode="ios" expand="block" (click)="goHome()"
+          >ACCEPT</ion-button
+        >
       </ion-col>
-
     </ion-row>
   </ion-grid>
-  
 </ion-content>

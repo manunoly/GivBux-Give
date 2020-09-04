@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { SuccessPageRoutingModule } from './success-routing.module';
 
 import { SuccessPage } from './success.page';
-import { HeaderGivbuxModule } from '../header-givbux/header-givbux.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import { HeaderGivbuxModule } from '../header-givbux/header-givbux.module';
     FormsModule,
     IonicModule,
     SuccessPageRoutingModule,
-    HeaderGivbuxModule
+    SharedModule
   ],
   declarations: [SuccessPage]
 })

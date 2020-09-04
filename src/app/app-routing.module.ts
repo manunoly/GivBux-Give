@@ -27,6 +27,14 @@ const routes: Routes = [
     loadChildren: () => import('./success/success.module').then( m => m.SuccessPageModule)
   },
   {
+    path: 'user/view-more',
+    loadChildren: () => import('./view-more/view-more.module').then( m => m.ViewMorePageModule)
+  },
+  {
+    path: 'user/success-directly',
+    loadChildren: () => import('./success-directly/success-directly.module').then( m => m.SuccessDirectlyPageModule)
+  },
+  {
     path: '**',
     redirectTo: '', pathMatch: 'full'
   }

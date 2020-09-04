@@ -1,9 +1,21 @@
-.grid-margin-top{
-    margin-top: 10vh;
+.grid-margin-top {
+  margin-top: 10vh;
 }
 
-.container-img-success{
-    height: 25vmax;
-    width: 25vmax;
-    margin: auto;
+.container-img-success {
+  height: 25vmax;
+  width: 25vmax;
+  margin: auto;
+}
+
+.logo-congratulations {
+  margin: -30vmin 5vmin;
+}
+
+.color-subheader {
+  color: var(--ion-color-primary) !important;
+}
+
+.logo-hands {
+  width: 60vmin;
 }

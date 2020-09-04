@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { DonateAutomaticPageRoutingModule } from './donate-automatic-routing.module';
 
 import { DonateAutomaticPage } from './donate-automatic.page';
-import { HeaderGivbuxModule } from '../header-givbux/header-givbux.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import { HeaderGivbuxModule } from '../header-givbux/header-givbux.module';
     FormsModule,
     IonicModule,
     DonateAutomaticPageRoutingModule,
-    HeaderGivbuxModule
+    SharedModule
   ],
   declarations: [DonateAutomaticPage]
 })

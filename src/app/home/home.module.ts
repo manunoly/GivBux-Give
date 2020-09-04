@@ -9,6 +9,7 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { HomePage } from './home.page';
 import { HeaderGivbuxModule } from '../header-givbux/header-givbux.module';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule,
     HomePageRoutingModule,
     HeaderGivbuxModule,
+    SharedModule
   ],
   declarations: [
     HomePage,

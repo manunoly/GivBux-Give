@@ -8,6 +8,7 @@ import { HistoryPageRoutingModule } from './history-routing.module';
 
 import { HistoryPage } from './history.page';
 import { HeaderGivbuxModule } from '../header-givbux/header-givbux.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { HeaderGivbuxModule } from '../header-givbux/header-givbux.module';
     IonicModule,
     HistoryPageRoutingModule,
     HeaderGivbuxModule,
+    SharedModule
   ],
   declarations: [
     HistoryPage,

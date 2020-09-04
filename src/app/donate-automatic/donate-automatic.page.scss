@@ -2,12 +2,19 @@
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 10;
+  z-index: 1000;
   .img-box-selected {
     float: right;
-    width: 5vmax;
-    height: 5vmax;
-    font-size: 2.5vmin;
+    width: 9vmin;
+    height: 9vmin;
+    font-size: 0.7rem;
+    border-radius: 100%;
+    background: var(--ion-color-light-givbux);
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 100%;
+    }
   }
 }
 
@@ -15,13 +22,78 @@
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 10;
+  z-index: 1000;
   ion-fab-button {
-    width: 5vmax;
-    height: 5vmax;
+    width: 9vmin;
+    height: 9vmin;
     .img-box-selected {
-      width: 4vmax;
-      height: 4vmax;
+      width: 18vmin;
+      height: 18vminx;
     }
   }
+}
+
+.full-width {
+  width: 100%;
+}
+.small-category {
+  font-size: 65%;
+}
+
+.div-border-top {
+  border-top: 0.5px solid var(--ion-color-medium);
+}
+
+.row-givbux-history {
+  // border-top: 0.5px solid var(--ion-color-medium);
+  border-bottom: 0.5px solid var(--ion-color-medium);
+  color: var(--ion-color-primary);
+  padding: 0.5rem 0;
+}
+.row-givbux-history-padding {
+  // border-top: 0.5px solid var(--ion-color-medium);
+  border-bottom: 0.5px solid var(--ion-color-medium);
+  color: var(--ion-color-primary);
+  padding: 0.5rem;
+}
+.row-givbux-history-no-padding {
+  // border-top: 0.5px solid var(--ion-color-medium);
+  border-bottom: 0.5px solid var(--ion-color-medium);
+  color: var(--ion-color-primary);
+}
+
+.row-more-charities {
+  border-bottom: 0.5px solid var(--ion-color-medium);
+}
+.btn-number-percentage {
+  width: 12%;
+  height: 2.5rem;
+}
+
+.btn-other-percentage {
+  width: 30%;
+  height: 2.5rem;
+}
+
+.container-percentage {
+  position: absolute;
+  z-index: 9;
+  top: 6px;
+
+  .border-percentage {
+    border-radius: 10px;
+  }
+}
+
+.item-selec-categories {
+  --padding-start: 0.5rem;
+}
+
+.select-categories {
+  border: 1px solid var(--ion-color-primary);
+  border-radius: 10px;
+  padding: 0.5rem;
+  background: var(--ion-color-light);
+  color: var(--ion-color-primary);
+  margin-top: 0.7rem;
 }

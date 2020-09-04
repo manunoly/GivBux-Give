@@ -1,0 +1,33 @@
+<ion-header class="header-givbux ion-no-border">
+  <ion-toolbar class="ion-no-border ion-text-center" [ngClass]="{'toolbar-none': !toolbar}">
+    <ion-buttons slot="start">
+      <ion-back-button *ngIf="inicio && regresarApp" color="light"  defaultHref="home" [text]="''" (click)="returnApp()"></ion-back-button> 
+      <ion-back-button *ngIf="inicio && !regresarApp" color="light" defaultHref="home" [text]="''"></ion-back-button>
+      <ion-button *ngIf="!inicio" fill="clear">
+        <ion-icon [hidden]="!inicio" slot="icon-only" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- <ion-title style="font-size: 30PX;">
+      <h1> <b> {{title}} </b></h1>
+    </ion-title> -->
+
+    <ion-title><b>{{title}}</b></ion-title>
+
+    <ion-buttons slot="end">
+      <ion-menu-button *ngIf="fin" color="light"></ion-menu-button>
+
+      <ion-button *ngIf="!fin" fill="clear">
+        <ion-icon [hidden]="!fin" slot="icon-only" name="menu"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+  </ion-toolbar>
+ 
+  <div [hidden]="!shape" class="shape-header-img">
+   <img src="/assets/img/givbux-new-header.svg">
+  </div>
+  
+ 
+
+</ion-header>

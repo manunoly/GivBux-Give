@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://apd.gvbx.io/ap/',
+  apiUrl: 'https://apd.gvbx.io/api/',
 };
 
 /*

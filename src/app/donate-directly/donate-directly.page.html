@@ -228,7 +228,6 @@
             </ion-text>
           </ion-row>
         </div>
-
       </ng-container>
 
       <!-- LOADING SPINNER -->
@@ -240,19 +239,6 @@
           </span>
         </ion-col>
       </ng-container>
-
-      <!-- DONATE BUTTON -->
-
-      <ion-col size="12">
-        <ion-button
-          color="primary"
-          mode="ios"
-          expand="block"
-          [disabled]=" !(amountToDonate > 0) || !charitySelected "
-          (click)="giveDonateToCharity()"
-          >CONFIRM</ion-button
-        >
-      </ion-col>
     </ion-row>
   </ion-grid>
 
@@ -273,3 +259,20 @@
     >
   </ion-fab>
 </ion-content>
+
+<ion-footer class="content-light-footer">
+  <ion-row>
+    <!-- DONATE BUTTON -->
+
+    <ion-col size="12">
+      <ion-button
+        color="primary"
+        mode="ios"
+        expand="block"
+        [disabled]=" !(amountToDonate > 0) || !charitySelected "
+        (click)="giveDonateToCharity()"
+        >CONFIRM</ion-button
+      >
+    </ion-col>
+  </ion-row>
+</ion-footer>

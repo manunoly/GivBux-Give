@@ -334,31 +334,6 @@
           </span>
         </ion-col>
       </ng-container>
-
-      <!-- SAVE BUTTON -->
-
-      <ion-col size="12">
-        <ion-button
-          color="primary"
-          mode="ios"
-          expand="block"
-          [disabled]=" !(percentageToDonate > 0) || !(this.charitiesSelected.length > 0) "
-          (click)="setGiveDefaultDonation()"
-          >SAVE</ion-button
-        >
-      </ion-col>
-
-      <!-- Donate From my wallet button -->
-
-      <ion-col size="12">
-        <ion-button
-          color="primary"
-          mode="ios"
-          expand="block"
-          (click)="showAlertConfirmGivinFromWallet()"
-          >DONATE FROM MY WALLET
-        </ion-button>
-      </ion-col>
     </ion-row>
   </ion-grid>
 
@@ -379,3 +354,34 @@
     >
   </ion-fab>
 </ion-content>
+
+<ion-footer class="content-light-footer">
+  <ion-row>
+    <!-- SAVE BUTTON -->
+
+    <ion-col size="6">
+      <ion-button
+        color="primary"
+        class="btn-footer-col"
+        mode="ios"
+        expand="block"
+        [disabled]=" !(percentageToDonate > 0) || !(this.charitiesSelected.length > 0) "
+        (click)="setGiveDefaultDonation()"
+        >SAVE</ion-button
+      >
+    </ion-col>
+
+    <!-- Donate From my wallet button -->
+
+    <ion-col size="6">
+      <ion-button
+        color="primary"
+        class="btn-footer-col"
+        mode="ios"
+        expand="block"
+        (click)="showAlertConfirmGivinFromWallet()"
+        >DONATE FROM MY WALLET
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

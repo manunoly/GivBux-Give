@@ -123,7 +123,7 @@
           <ion-text color="light" class="fs-text-09">
             <p class="ion-no-margin">
               Select one charity from the list below that you wish to contribute
-              a percenttage of your purchase rewards to, or search by name or by
+              a percentage of your purchase rewards to, or search by name or by
               category.
             </p>
           </ion-text>
@@ -223,15 +223,17 @@
             </ion-col>
 
             <ion-col size="12" class="ion-no-padding">
-              <div *ngIf="charity?.selected" class="container-percentage">
-                <span class="border-percentage"
-                  ><b
-                    >{{calculatePercentageToShow() | number:'1.0-2'}}%</b
-                  ></span
-                >
-              </div>
 
               <ion-row class="ion-no-padding ion-no-margin row-givbux-history">
+
+                <div *ngIf="charity?.selected" class="container-percentage">
+                  <span class="border-percentage"
+                    ><b
+                      >{{calculatePercentageToShow() | number:'1.0-2'}}%</b
+                    ></span
+                  >
+                </div>
+
                 <!-- AVATAR TYPE IMG LEFT -->
                 <ion-col size="3" class="ion-align-self-center">
                   <ion-avatar class="avatar-img">
@@ -283,7 +285,8 @@
                         size="small"
                         (click)="selectCharityToDonate(i , charity)"
                       >
-                        Select this Charity
+                      <span *ngIf="charity?.selected">Unselect this Charity</span>
+                      <span *ngIf="!charity?.selected">Select this Charity</span>
                       </ion-button>
                     </ion-col>
 

@@ -93,6 +93,7 @@ export class DonateAutomaticPage implements OnInit {
   }
 
   ionViewWillEnter() {
+    console.log('IonWill Enter');
     this.loadData();
   }
 
@@ -181,6 +182,8 @@ export class DonateAutomaticPage implements OnInit {
   }
 
   async loadData() {
+    this.clearDataStateApp();
+
     try {
       await this._utils.showLoading();
       const response = await this._api.getGiveDefault();
@@ -333,5 +336,19 @@ export class DonateAutomaticPage implements OnInit {
       );
       console.log(error);
     }
+  }
+
+  private clearDataStateApp() {
+
+    this.charitiesSelected = [];
+    this.percentageToDonate = null;
+    this.charitySelectedQuantity = 0;  
+    this.selectedPercentage = [false, false, false, false, false];
+    this.flagQuerySearch = false;
+
+    for (const iterator of this.charities) {
+      iterator.selected = false;      
+    }
+
   }
 }

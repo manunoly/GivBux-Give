@@ -23,7 +23,8 @@
           </p>
 
           <p *ngIf="donatedTo == '' ">
-            You have donated {{ amount | currency: 'USD'}}
+            You have transferred {{ amount | currency: 'USD'}} to your Donation
+            Holding Balance
           </p>
 
           <h2><b>{{donatedTo | uppercase}}</b></h2>
@@ -37,9 +38,15 @@
         </div>
       </ion-col>
 
-      <ion-col size="12" class="ion-margin-top">
+      <ion-col size="12" class="ion-margin-top" *ngIf="donatedTo != '' ">
         <ion-text color="medium" class="fs-text-09">
           <p>You have donated successfully!</p>
+        </ion-text>
+      </ion-col>
+
+      <ion-col size="12" class="ion-margin-top" *ngIf="donatedTo == '' ">
+        <ion-text color="medium" class="fs-text-09">
+          <p>You have transferred successfully!</p>
         </ion-text>
       </ion-col>
 

@@ -78,7 +78,7 @@
 .container-percentage {
   position: absolute;
   z-index: 9;
-  top: 6px;
+  // top: 6px;
 
   .border-percentage {
     border-radius: 10px;
@@ -96,4 +96,9 @@
   background: var(--ion-color-light);
   color: var(--ion-color-primary);
   margin-top: 0.7rem;
+}
+
+.btn-footer-col{
+  white-space: normal;
+  font-size: 0.9rem;
 }

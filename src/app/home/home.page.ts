@@ -112,7 +112,7 @@ export class HomePage implements OnInit {
   }
 
   callAlertInfo(iconNumber : number) {
-    this._utils.showAlertMessageHome('Help' , iconNumber)
+    this._utils.showAlertMessageHome('INFORMATION' , iconNumber)
   }
 
 

@@ -102,7 +102,7 @@
       <!-- NgFor Item Charity -->
       <!-- NgFor Item Charity -->
       <ng-container *ngIf="!loading">
-        <ion-text color="medium" class="full-width">
+        <ion-text color="medium" *ngIf="!flagQuerySearch" class="full-width">
           <h2 class="ion-no-margin ion-text-start">
             <b>Top 10 Charities</b>
             <ion-icon
@@ -121,7 +121,7 @@
           <ng-container
             *ngFor="let charity of charities ; let i=index ; trackBy:trackByFn"
           >
-            <ion-col size="12" *ngIf="i == 9">
+            <ion-col size="12" *ngIf="(i == 10 && !flagQuerySearch)">
               <ion-text color="medium">
                 <h4 class="ion-no-margin ion-text-start row-more-charities">
                   <b>More Charities</b>

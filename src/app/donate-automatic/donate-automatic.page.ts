@@ -231,7 +231,7 @@ export class DonateAutomaticPage implements OnInit {
   }
 
   callAlertInfo() {
-    this._utils.showAlertMessageHome('Help', 1);
+    this._utils.showAlertMessageHome('Notice', 1);
   }
 
   viewMoreFromCharity(charity: Charity) {
@@ -271,7 +271,7 @@ export class DonateAutomaticPage implements OnInit {
   }
 
   filterLocal(event) {
-    // console.log(event);
+    console.log(event);
     if (event.target.value != '') {
       this.flagQuerySearch = true;
       this.filterByName(event.target.value);
@@ -283,9 +283,10 @@ export class DonateAutomaticPage implements OnInit {
 
   private filterByName(search: string): Charity[] {
     console.log(search);
-    if (search != '') {
+    const searchLowerCase = search.toLowerCase();
+    if (searchLowerCase != '') {
       const resultFilter = this.charitiesBackup.filter((charity) =>
-        charity.name.toLowerCase().includes(search)
+        charity.name.toLowerCase().includes(searchLowerCase)
       );
       console.log(resultFilter);
       if (resultFilter.length == 0) {

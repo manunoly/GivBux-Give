@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
 export class UtilsService {
 
   loading;
-  textIcon1 = 'Click on the rewards tab and use the sliding scale feature to the top of the screen to set your donation percentage. A minimum of 1% is required to begin receiving rewards.';
+  textIcon1 = 'Click on the rewards tab and use the sliding scale feature to set your donation percentage. A minimum of 1% is required to begin receiving rewards.';
   textIcon2 = 'The amount in your Donations Holdings Balance will be distributed automatically to your selected charity or charities.';
-  textIcon3 = 'Make a one time donation from your wallet balance. The amount will be distributed to a chosen charity or charities.';
+  textIcon3 = 'Make a one-time donation from our wallet balance. The amount will be distributed to your chosen organization(s).';
 
   constructor(private router: Router,
     private loadingController: LoadingController,
@@ -40,7 +40,7 @@ export class UtilsService {
   async showAlertConfirmGivinFromWallet() {
 
     const alert = await this.alertController.create({
-      header: 'CONFIRM GIVING',
+      header: 'Confirm Giving',
       subHeader: 'Enter the amount you wish to transfer. ',
       message: `Your balance is $${this._api.userSesion.user_balanace ? this._api.userSesion.user_balanace : '0.00'}`,
       inputs: [
@@ -97,7 +97,7 @@ export class UtilsService {
       (`You are donating a total of ${percentageToDonate}% to ${charityName1} `)
 
     const alert = await this.alertController.create({
-      header: 'CONFIRM YOUR DONATION',
+      header: 'Confirm Your Donation',
       subHeader: subHeader,
       message: '',
       buttons: [
@@ -132,7 +132,7 @@ export class UtilsService {
     });
 
     const alert = await this.alertController.create({
-      header: 'CONFIRM YOUR DONATION',
+      header: 'Confirm Your Donation',
       subHeader: `Are you sure you want to Donate $${amount.toFixed(2)} to ${charityName}?`,
       message: '',
       buttons: [

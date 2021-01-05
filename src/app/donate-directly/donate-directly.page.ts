@@ -151,7 +151,7 @@ export class DonateDirectlyPage implements OnInit {
   }
 
   callAlertInfo() {
-    this._utils.showAlertMessageHome('Help', 2);
+    this._utils.showAlertMessageHome('Notice', 2);
   }
 
   trackByFn(index: number, charity: any): any {
@@ -171,9 +171,10 @@ export class DonateDirectlyPage implements OnInit {
 
   private filterByName(search: string): Charity[] {
     console.log(search);
-    if (search != '') {
+    const searchLowerCase = search.toLowerCase();
+    if (searchLowerCase != '') {
       const resultFilter = this.charitiesBackup.filter((charity) =>
-        charity.name.toLowerCase().includes(search)
+        charity.name.toLowerCase().includes(searchLowerCase)
       );
       console.log(resultFilter);
       if (resultFilter.length == 0) {

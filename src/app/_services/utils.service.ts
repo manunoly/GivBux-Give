@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class UtilsService {
 
   loading;
-  textIcon1 = 'Click on the rewards tab and use the sliding scale feature to set your donation percentage. A minimum of 1% is required to begin receiving rewards.';
+  textIcon1 = 'Click on the rewards tab to select or input your donation percentage. A minimum of 1% is required to begin receiving rewards.';
   textIcon2 = 'The amount in your Donations Holdings Balance will be distributed automatically to your selected charity or charities.';
   textIcon3 = 'Make a one-time donation from our wallet balance. The amount will be distributed to your chosen organization(s).';
 

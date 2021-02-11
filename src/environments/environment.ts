@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://apd.gvbx.io/api/',
+  apiUrl: 'https://apb.gvbx.io/api/',
   env_dwolla: 'sandbox'
 };
 

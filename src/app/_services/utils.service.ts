@@ -219,8 +219,23 @@ export class UtilsService {
   }
 
   returnToApp() {
-    console.log('returning to app');
-    window.open('givbuxapp://givbuxapp');
+    // console.log(this.router.url);
+
+    if(this.router.url.includes('add-bank-account')){
+
+      this.returnToAppFromAddBank();
+
+    } else {
+
+      console.log('returning to app FROM GIVE');
+      window.open('givbuxapp://givbuxapp');
+    }
+   
+  }
+
+  returnToAppFromAddBank(){
+    console.log('returning to app FROM ADD BANK CLOSE');
+    window.open('givbuxapp://add-bank-close');
   }
 
   async donateFromWallet(amount: number) {

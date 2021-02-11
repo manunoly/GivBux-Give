@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://apd.gvbx.io/api/',
+  env_dwolla: 'sandbox'
 };
 
 /*

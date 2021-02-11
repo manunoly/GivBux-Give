@@ -35,6 +35,10 @@ const routes: Routes = [
     loadChildren: () => import('./success-directly/success-directly.module').then( m => m.SuccessDirectlyPageModule)
   },
   {
+    path: 'add-bank-account',
+    loadChildren: () => import('./add-bank-account/add-bank-account.module').then( m => m.AddBankAccountPageModule)
+  },
+  {
     path: '**',
     redirectTo: '', pathMatch: 'full'
   }

@@ -222,7 +222,7 @@
               </ion-text>
             </ion-col>
 
-            <ion-col size="12" class="ion-no-padding">
+            <ion-col *ngIf="charity.status" size="12" class="ion-no-padding">
 
               <ion-row class="ion-no-padding ion-no-margin row-givbux-history">
 
@@ -374,7 +374,7 @@
       >
     </ion-col>
 
-    <!-- Donate From my wallet button -->
+    <!-- TRANSFER FROM  MY WALLET button -->
 
     <ion-col size="6">
       <ion-button
@@ -383,7 +383,7 @@
         mode="ios"
         expand="block"
         (click)="showAlertConfirmGivinFromWallet()"
-        >DONATE FROM MY WALLET
+        >TRANSFER FROM  MY WALLET
       </ion-button>
     </ion-col>
   </ion-row>

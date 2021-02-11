@@ -1,0 +1,49 @@
+<app-new-header-givbux
+  [inicio]="true"
+  [fin]="false"
+  [regresarApp]="true"
+  title="Add Bank Account"
+></app-new-header-givbux>
+
+<ion-content fullscreen class="ion-text-center ion-padding content-light">
+  <!-- <ion-text color="light">
+    <h3 style="padding-bottom: 50px;"> BUY GIVBUX </h3>
+  </ion-text> -->
+
+  <ion-grid class="padding-top-header-content" >
+
+    <ion-row style="padding-top: 30px;">
+      <ion-col>
+        <div class="ion-text-center" *ngIf="show">
+          <ion-spinner></ion-spinner>
+          <h3>Please wait!</h3>
+        </div>
+      
+        <div id="iavContainer" [hidden]="errorByIAV"></div>
+
+        <div *ngIf="errorByIAV">
+          <ion-text color="primary">
+            <h5 [innerHTML]="messageErrorIAV"></h5>
+          </ion-text>
+        </div>
+
+        <div *ngIf="erroByAPI">
+          <ion-text color="primary">
+            <h5 [innerHTML]="messageErrorAPI"></h5>
+          </ion-text>
+        </div>
+
+
+      </ion-col>
+
+      <ion-col size="12" *ngIf="showCloseButton">
+        <ion-button color="primary" expand="block" mode="ios" (click)="backToList()">
+          Close
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    </ion-grid>
+
+
+</ion-content>

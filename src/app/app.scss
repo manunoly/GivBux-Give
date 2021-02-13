@@ -314,6 +314,18 @@
   }
 }
 
+.version {
+  position: absolute;
+  float: right;
+  // bottom: 5px;
+  right: 10px;
+  z-index: 9;
+  color: var(--ion-color-light);
+  p {
+    margin: 0;
+  }
+}
+
 //MISC
 .ion-padding-top-1 {
   padding-top: 1rem;

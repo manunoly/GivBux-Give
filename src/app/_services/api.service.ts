@@ -17,10 +17,7 @@ export class ApiService {
   }
 
   private getHeaders() {
-    return {
-      'X-Parse-Application-Id': '9fadf4897e214f2vv5c05d7973331gg8',
-      'X-Parse-REST-API-Key': '20dbb0840bf6227dac0209dbdggg2454',
-    };
+    return {};
   }
 
   public set token(v: string) {

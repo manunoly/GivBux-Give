@@ -122,12 +122,13 @@ export class AddBankAccountPage implements OnInit {
             this.messageErrorIAV = `Sorry, we are facing an unexpected error Checking the User Data. <br> Please go back and try again. <br> [cod-IAV]`;
 
             if (err && err['code'] && err['code'] == 'InvalidIavToken') {
-              this.errorByIAV = true;
-              this.showCloseButton = true;
+  
               this.messageErrorIAV = `The session has expired. <br> Please go back and try again. <br> [cod-IAV]`;
+
             }
             this.show = false;
             this.errorByIAV = true;
+            this.showCloseButton = true;
           }
         }
       );

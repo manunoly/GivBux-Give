@@ -239,7 +239,15 @@ export class UtilsService {
     } else {
       console.log('returning to app FROM GIVE');
       console.log(' BY MESSAGE');
-      (window as any).webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify('givbuxapp://givbuxapp'));
+
+      try {
+        console.log('BY MESSAGE');
+        (window as any).webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify('givbuxapp://givbuxapp'));
+      } catch (error) {
+        console.log(error);
+        console.log('**ERROR BY MESSAGE**');
+      }
+     
       console.log(' BY OPEN ');
       window.open('givbuxapp://givbuxapp', '_self');
       console.log(' BY CLOSE ');
@@ -251,8 +259,16 @@ export class UtilsService {
   returnToAppFromAddBank() {
 
     console.log('returning to app FROM ADD BANK CLOSE');
-    console.log(' BY MESSAGE');
-    (window as any).webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify('givbuxapp://add-bank-close'));
+    
+
+    try {
+      console.log('BY MESSAGE');
+      (window as any).webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify('givbuxapp://add-bank-close'));
+    } catch (error) {
+      console.log(error);
+      console.log('**ERROR BY MESSAGE**');
+    }
+  
     console.log(' BY OPEN ');
     window.open('givbuxapp://add-bank-close', '_self');
     console.log(' BY CLOSE ');

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ApiService } from '../_services/api.service';
+import { UtilsService } from '../_services/utils.service';
 
 @Component({
   selector: 'app-success',
@@ -16,7 +17,8 @@ export class SuccessPage implements OnInit {
 
   constructor(private router: Router,
     private route: ActivatedRoute,
-    private _api : ApiService) { 
+    private _api : ApiService,
+    private utilService: UtilsService) { 
     
     // PARAMMAP FOR AMOUNT 
     this.amount = this.route.snapshot.paramMap.get('amount') ? Number(this.route.snapshot.paramMap.get('amount')) : 0;
@@ -46,6 +48,7 @@ export class SuccessPage implements OnInit {
   goHome(){
     //Setting flag for reload data on Home view after transfer operation
     this._api.afterTransferSuccess = true;
-    this.router.navigate(['/']);
+    this.utilService.returnToApp();
+    // this.router.navigate(['/']);
   }
 }

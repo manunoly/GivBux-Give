@@ -3,6 +3,7 @@ import { Charity } from '../_models/charity.model';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { ApiService } from '../_services/api.service';
+import { UtilsService } from '../_services/utils.service';
 
 @Component({
   selector: 'app-success-directly',
@@ -17,7 +18,8 @@ export class SuccessDirectlyPage implements OnInit {
   constructor(
     private router: Router,
     private navController: NavController,
-    private _api: ApiService
+    private _api: ApiService,
+    private utilService: UtilsService
   ) {
     this.charity =
       this.router.getCurrentNavigation().extras &&
@@ -54,6 +56,7 @@ export class SuccessDirectlyPage implements OnInit {
   goHome() {
     //Setting flag for reload data on Home view after transfer operation
     this._api.afterTransferSuccess = true;
-    this.navController.navigateRoot(['/']);
+    this.utilService.returnToApp();
+    // this.navController.navigateRoot(['/']);
   }
 }

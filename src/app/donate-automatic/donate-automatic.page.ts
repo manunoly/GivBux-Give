@@ -126,7 +126,8 @@ export class DonateAutomaticPage implements OnInit {
           response as string
         );
         if (responseAlert) {
-          this.router.navigate(['/']);
+          // this.router.navigate(['/']);
+          this._utils.returnToApp();
         }
         // this.router.navigate(['/success', 'directly', { charity1: this.charitySelected.name, amount: this.amountToDonate }])
       } catch (error) {

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { LoadingController, AlertController, Platform } from '@ionic/angular';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -238,26 +239,47 @@ export class UtilsService {
       this.returnToAppFromAddBank();
     } else {
       console.log('returning to app FROM GIVE');
-      console.log(' BY MESSAGE');
-      (window as any).webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify('givbuxapp://givbuxapp'));
+
       console.log(' BY OPEN ');
-      window.open('givbuxapp://givbuxapp', '_self');
-      console.log(' BY CLOSE ');
-      window.close(); 
-      
+
+      if (this.platform.is('android')) {
+        window.open(`${environment.intent_app}givbuxapp`, '_blank');
+      } else if (this.platform.is('ios')) {
+        //TODO: check this /givbuxapp its causing the problem on iOS close SAFARIVIEWCONTROLLER
+        window.open(`${environment.intent_app_ios}close-app`, '_blank');
+      }
+
+      /*       try {
+        console.log('BY MESSAGE');
+        (window as any).webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify('givbuxapp://givbuxapp'));
+      } catch (error) {
+        console.log(error);
+        console.log('**ERROR BY MESSAGE**');
+      }  */
+
+      //window.open('givbuxapp://givbuxapp', '_self');
+      // console.log(' BY CLOSE ');
+      // window.close();
     }
   }
 
   returnToAppFromAddBank() {
-
     console.log('returning to app FROM ADD BANK CLOSE');
-    console.log(' BY MESSAGE');
-    (window as any).webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify('givbuxapp://add-bank-close'));
+
     console.log(' BY OPEN ');
-    window.open('givbuxapp://add-bank-close', '_self');
-    console.log(' BY CLOSE ');
-    window.close();
-    
+    window.open(`${environment.intent_app}add-bank-close`, '_self');
+
+    /* 
+    try {
+      console.log('BY MESSAGE');
+      (window as any).webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify('givbuxapp://add-bank-close'));
+    } catch (error) {
+      console.log(error);
+      console.log('**ERROR BY MESSAGE**');
+    } */
+
+    /* console.log(' BY CLOSE ');
+    window.close(); */
   }
 
   async donateFromWallet(amount: number) {

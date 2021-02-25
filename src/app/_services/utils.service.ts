@@ -246,7 +246,7 @@ export class UtilsService {
         window.open(`${environment.intent_app}givbuxapp`, '_blank');
       } else if (this.platform.is('ios')) {
         //TODO: check this /givbuxapp its causing the problem on iOS close SAFARIVIEWCONTROLLER
-        window.open(`${environment.intent_app_ios}givbuxapp`, '_blank');
+        window.open(`${environment.intent_app_ios}close-app`, '_blank');
       }
 
       /*       try {

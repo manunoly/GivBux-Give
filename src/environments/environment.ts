@@ -6,8 +6,8 @@ export const environment = {
   production: false,
   apiUrl: 'https://api.gvbx.io/api/',
   env_dwolla: 'sandbox',
-  intent_app: 'givbuxbeta://',
-  intent_app_ios: 'https://givbuxdev.app.link/'
+  intent_app: 'givbux://',
+  intent_app_ios: 'https://givbux.app.link/'
 };
 
 /*

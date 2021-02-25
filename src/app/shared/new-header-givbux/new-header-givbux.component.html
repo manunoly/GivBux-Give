@@ -1,7 +1,10 @@
 <ion-header class="header-givbux ion-no-border">
   <ion-toolbar class="ion-no-border ion-text-center" [ngClass]="{'toolbar-none': !toolbar}">
     <ion-buttons slot="start">
-      <ion-back-button *ngIf="inicio && regresarApp" color="light"  defaultHref="home" [text]="''" (click)="returnApp()"></ion-back-button> 
+      <ion-button *ngIf="inicio && regresarApp" color="light" (click)="returnApp()" fill="clear">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+      <!-- <ion-back-button *ngIf="inicio && regresarApp" color="light"  [text]="''" (click)="returnApp()"></ion-back-button>  -->
       <ion-back-button *ngIf="inicio && !regresarApp" color="light" defaultHref="home" [text]="''"></ion-back-button>
       <ion-button *ngIf="!inicio" fill="clear">
         <ion-icon [hidden]="!inicio" slot="icon-only" name="menu"></ion-icon>

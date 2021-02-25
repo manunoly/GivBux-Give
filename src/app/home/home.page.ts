@@ -14,6 +14,7 @@ export class HomePage implements OnInit {
   tokenValid: boolean = false;
   loading = false;
   userSesion;
+  version = '4.0.1';
 
   constructor(private _api: ApiService,
     private route: ActivatedRoute,

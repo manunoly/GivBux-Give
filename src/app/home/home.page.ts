@@ -9,18 +9,17 @@ import { UtilsService } from '../_services/utils.service';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-
   title = 'Give';
   tokenValid: boolean = false;
   loading = false;
   userSesion;
   version = '4.0.2';
 
-  constructor(private _api: ApiService,
+  constructor(
+    private _api: ApiService,
     private route: ActivatedRoute,
-    public _utils: UtilsService) {
-
-  }
+    public _utils: UtilsService
+  ) {}
 
   ngOnInit() {
     console.log('onInit');
@@ -34,7 +33,6 @@ export class HomePage implements OnInit {
       this._api.afterTransferSuccess = false; //Setting variable controller to false after transfer success
       console.log('reEnter on Home after transfer');
       this.getRefresDataUser();
-
     }
   }
 
@@ -42,10 +40,8 @@ export class HomePage implements OnInit {
     return charity.id;
   }
 
-  async getRefresDataUser(){
-
+  async getRefresDataUser() {
     try {
-
       this.loading = true;
       await this._utils.showLoading();
       const responseUser = await this._api.getDataGiveUser();
@@ -57,8 +53,6 @@ export class HomePage implements OnInit {
       // SETTING UP DATA ON SERVICE AND COMPONENT
       this._api.userSesion = responseUser;
       this.userSesion = responseUser;
-
-
     } catch (error) {
       await this._utils.dismissLoading();
       this.loading = false;
@@ -68,22 +62,20 @@ export class HomePage implements OnInit {
 
   checkTokenValidation() {
     if (this.route.snapshot.paramMap.get('token')) {
-      console.log('token recieved => ' + this.route.snapshot.paramMap.get('token'));
-      this.giveValidateToken(this.route.snapshot.paramMap.get('token'))
-    }
-    else if (this._api.refreshSameTokenSession()) {
+      console.log(
+        'token recieved => ' + this.route.snapshot.paramMap.get('token')
+      );
+      this.giveValidateToken(this.route.snapshot.paramMap.get('token'));
+    } else if (this._api.refreshSameTokenSession()) {
       console.log('retrieve token from session => ' + this._api.token);
-      if(!this._api.afterTransferSuccess)
-        this.getRefresDataUser();
+      if (!this._api.afterTransferSuccess) this.getRefresDataUser();
     }
   }
 
   async giveValidateToken(token: string) {
-
     console.log('checking token...');
 
     try {
-
       this.loading = true;
       await this._utils.showLoading();
       const responseUser = await this._api.giveValidateToken(token);
@@ -97,25 +89,19 @@ export class HomePage implements OnInit {
       this._api.userSesion = responseUser;
 
       this.userSesion = responseUser;
-
-
     } catch (error) {
       await this._utils.dismissLoading();
       this.loading = false;
       this.tokenValid = false;
       console.log(error['error'].error ? error['error'].message : 'error');
     }
-
   }
 
   showAlertConfirmGivinFromWallet() {
     this._utils.showAlertConfirmGivinFromWallet();
   }
 
-  callAlertInfo(iconNumber : number) {
-    this._utils.showAlertMessageHome('Information' , iconNumber)
+  callAlertInfo(iconNumber: number) {
+    this._utils.showAlertMessageHome('Information', iconNumber);
   }
-
-
-
 }

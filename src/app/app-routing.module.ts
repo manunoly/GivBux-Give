@@ -39,6 +39,10 @@ const routes: Routes = [
     loadChildren: () => import('./add-bank-account/add-bank-account.module').then( m => m.AddBankAccountPageModule)
   },
   {
+    path: 'user/give-complete-process',
+    loadChildren: () => import('./give-complete-process/give-complete-process.module').then( m => m.GiveCompleteProcessPageModule)
+  },
+  {
     path: '**',
     redirectTo: '', pathMatch: 'full'
   }

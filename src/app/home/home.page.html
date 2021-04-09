@@ -1,5 +1,5 @@
 <app-new-header-givbux
-  [inicio]="true"
+  [inicio]="false"
   [fin]="false"
   [regresarApp]="true"
   title="GIVE"
@@ -71,8 +71,8 @@
                 size="10"
                 class="ion-no-padding ion-no-margin ion-align-self-center"
               >
-              SET YOUR DONATION <br />
-              PERCENTAGE
+                SET YOUR DONATION <br />
+                PERCENTAGE
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -83,7 +83,8 @@
         <ion-item color="dark">
           <ion-text class="ion-text-center">
             <h6 class="ion-no-margin">
-              Select one or two charities from the list to receive your donations.
+              Select one or two charities from the list to receive your
+              donations.
             </h6>
           </ion-text>
         </ion-item>
@@ -139,7 +140,8 @@
         <ion-item color="dark">
           <ion-text class="ion-text-center">
             <h6 class="ion-no-margin">
-              This option will deduct the amount selected from your Donation Holdings Balance.
+              This option will deduct the amount selected from your Donation
+              Holdings Balance.
             </h6>
           </ion-text>
         </ion-item>
@@ -159,7 +161,6 @@
           ></ion-icon>
         </ion-item>
       </ion-col>
-
 
       <ion-col size="12" offset="0">
         <ion-button
@@ -184,8 +185,8 @@
                 size="10"
                 class="ion-no-padding ion-no-margin ion-align-self-center"
               >
-              TRANSFER FROM <br /> 
-              MY WALLET            
+                TRANSFER FROM <br />
+                MY WALLET
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -215,18 +216,11 @@
             Thank you for updating your GivBux "Give" selections.
             <br />
             This session has ended.
+            <br />
+            To close this window, please press the top left button of the
+            browser.
           </h5>
         </ion-text>
-      </ion-col>
-
-      <ion-col size="12">
-        <ion-button
-          color="primary"
-          mode="ios"
-          expand="block"
-          (click)="this._utils.returnToApp()"
-          >BACK</ion-button
-        >
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -240,5 +234,4 @@
   <div class="version">
     <p>{{version}}</p>
   </div>
-  
 </ion-content>

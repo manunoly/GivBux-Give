@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { LoadingController, AlertController, Platform } from '@ionic/angular';
+import {
+  LoadingController,
+  AlertController,
+  Platform,
+  NavController,
+} from '@ionic/angular';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
@@ -21,7 +26,8 @@ export class UtilsService {
     private loadingController: LoadingController,
     private alertController: AlertController,
     private _api: ApiService,
-    private platform: Platform
+    private platform: Platform,
+    private navController: NavController
   ) {}
 
   async showLoading(msg = 'Please wait') {
@@ -238,16 +244,17 @@ export class UtilsService {
     if (this.router.url.includes('add-bank-account')) {
       this.returnToAppFromAddBank();
     } else {
-      console.log('returning to app FROM GIVE');
+      console.log('Navigate to Complete Process');
 
-      console.log(' BY OPEN ');
+      // UPDATE whit a new view for use the native close button from
+      // SafariViewController and ChromeCustomTabs
+      this.navController.navigateRoot(['user/give-complete-process']);
 
-      if (this.platform.is('android')) {
-        window.open(`${environment.intent_app}givbuxapp`, '_blank');
-      } else if (this.platform.is('ios')) {
-        //TODO: check this /givbuxapp its causing the problem on iOS close SAFARIVIEWCONTROLLER
-        window.open(`${environment.intent_app_ios}close-app`, '_blank');
-      }
+      // if (this.platform.is('android')) {
+      //   window.open(`${environment.intent_app}givbuxapp`, '_blank');
+      // } else if (this.platform.is('ios')) {
+      //   this.navController.navigateRoot(['give-complete-process']);
+      // }
 
       /*       try {
         console.log('BY MESSAGE');

@@ -19,7 +19,7 @@ export class UtilsService {
   textIcon2 =
     'The amount in your Donations Holdings Balance will be distributed automatically to your selected charity or charities.';
   textIcon3 =
-    'Make a one-time donation from our wallet balance. The amount will be distributed to your chosen organization(s).';
+    'Make a one-time donation from your wallet balance. The amount will be distributed to your chosen organization(s).';
 
   constructor(
     private router: Router,

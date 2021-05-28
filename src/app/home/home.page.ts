@@ -13,7 +13,7 @@ export class HomePage implements OnInit {
   tokenValid: boolean = false;
   loading = false;
   userSesion;
-  version = '4.0.3';
+  version = '4.0.3_001';
 
   constructor(
     private _api: ApiService,

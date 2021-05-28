@@ -28,11 +28,11 @@ export class DonateAutomaticPage implements OnInit {
   flagQuerySearch = false;
 
   popoverCategories = {
-    cssClass: 'categories-custom-popover'
-  }
+    cssClass: 'categories-custom-popover',
+  };
 
-  categoryFilter : string;
-  categories : Category[];
+  categoryFilter: string;
+  categories: Category[];
 
   constructor(
     private _api: ApiService,
@@ -67,7 +67,6 @@ export class DonateAutomaticPage implements OnInit {
       console.log(this.charitiesBackup);
 
       this.loadData();
-      
     } catch (error) {
       this.loading = false;
       this._utils.showAlertMessage(
@@ -84,7 +83,6 @@ export class DonateAutomaticPage implements OnInit {
       //console.log(response);
       this.categories = response as Category[];
       console.log(this.categories);
-
     } catch (error) {
       this.loading = false;
       this._utils.showAlertMessage(
@@ -125,9 +123,10 @@ export class DonateAutomaticPage implements OnInit {
           charity2OptionalID
         );
         await this._utils.dismissLoading();
-        const responseAlert = await this._utils.showAlertWaitConfirmationBackDropFalse(
-          response as string
-        );
+        const responseAlert =
+          await this._utils.showAlertWaitConfirmationBackDropFalse(
+            response as string
+          );
         if (responseAlert) {
           // this.router.navigate(['/']);
           this._utils.returnToApp();
@@ -305,8 +304,7 @@ export class DonateAutomaticPage implements OnInit {
     }
   }
 
-  async selectedCategory(event : CustomEvent){
-
+  async selectedCategory(event: CustomEvent) {
     // console.log(event);
     // console.log(event.detail.value);
     const categoryForSearch = event.detail.value;
@@ -314,7 +312,6 @@ export class DonateAutomaticPage implements OnInit {
     console.log(categoryForSearch);
 
     try {
-
       this.loading = true;
       const response = await this._api.getAllGive(categoryForSearch);
       this.loading = false;
@@ -322,7 +319,7 @@ export class DonateAutomaticPage implements OnInit {
       this.charities = response as Charity[];
       console.log(this.charities);
 
-      if(categoryForSearch){
+      if (categoryForSearch) {
         this.flagQuerySearch = true;
       } else {
         this.flagQuerySearch = false;
@@ -332,7 +329,6 @@ export class DonateAutomaticPage implements OnInit {
         charityIterable.selected = false;
         return charityIterable.status;
       });
-
     } catch (error) {
       this.loading = false;
       this._utils.showAlertMessage(
@@ -344,16 +340,14 @@ export class DonateAutomaticPage implements OnInit {
   }
 
   private clearDataStateApp() {
-
     this.charitiesSelected = [];
     this.percentageToDonate = null;
-    this.charitySelectedQuantity = 0;  
+    this.charitySelectedQuantity = 0;
     this.selectedPercentage = [false, false, false, false, false];
     this.flagQuerySearch = false;
 
     for (const iterator of this.charities) {
-      iterator.selected = false;      
+      iterator.selected = false;
     }
-
   }
 }

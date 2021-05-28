@@ -223,9 +223,7 @@
             </ion-col>
 
             <ion-col *ngIf="charity.status" size="12" class="ion-no-padding">
-
               <ion-row class="ion-no-padding ion-no-margin row-givbux-history">
-
                 <div *ngIf="charity?.selected" class="container-percentage">
                   <span class="border-percentage"
                     ><b
@@ -285,8 +283,12 @@
                         size="small"
                         (click)="selectCharityToDonate(i , charity)"
                       >
-                      <span *ngIf="charity?.selected">Unselect this Charity</span>
-                      <span *ngIf="!charity?.selected">Select this Charity</span>
+                        <span *ngIf="charity?.selected"
+                          >Unselect this Charity</span
+                        >
+                        <span *ngIf="!charity?.selected"
+                          >Select this Charity</span
+                        >
                       </ion-button>
                     </ion-col>
 
@@ -317,7 +319,10 @@
           class="div-border-top"
         >
           <ion-row
-            class="ion-no-padding ion-no-margin ion-text-center row-givbux-history-padding"
+            class="
+              ion-no-padding ion-no-margin ion-text-center
+              row-givbux-history-padding
+            "
           >
             <ion-text color="medium-givbux" class="ion-text-center">
               <p class="ion-text-center">
@@ -383,7 +388,7 @@
         mode="ios"
         expand="block"
         (click)="showAlertConfirmGivinFromWallet()"
-        >TRANSFER FROM  MY WALLET
+        >TRANSFER FROM MY WALLET
       </ion-button>
     </ion-col>
   </ion-row>

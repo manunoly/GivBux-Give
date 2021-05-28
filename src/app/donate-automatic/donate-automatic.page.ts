@@ -54,7 +54,7 @@ export class DonateAutomaticPage implements OnInit {
 
       this.charities = this.charities.filter((charityIterable) => {
         charityIterable.selected = false;
-        return charityIterable.status;
+        return charityIterable;
       });
 
       this.charitiesBackup = [...(this.charities as Charity[])];
@@ -65,6 +65,9 @@ export class DonateAutomaticPage implements OnInit {
 
       console.log(this.charities);
       console.log(this.charitiesBackup);
+
+      this.loadData();
+      
     } catch (error) {
       this.loading = false;
       this._utils.showAlertMessage(
